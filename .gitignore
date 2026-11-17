@@ -1,0 +1,11 @@
+# Dependencias de Node.js (nunca se suben a GitHub)
+node_modules/
+
+# Logs y archivos temporales del sistema
+npm-debug.log*
+.DS_Store
+Thumbs.db
+
+# Archivos de entorno o configuración local privada
+.env
+.vscode/
