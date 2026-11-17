@@ -13,7 +13,7 @@ Built by an engineering student, for engineering students.
 
 ## 💡 About the Project & My Story (Full Transparency)
 
-Hi! I'm a **20-year-old 2nd-year Industrial Engineering student** at the **Universitat Politècnica de València (UPV)** in Spain. 
+Hi! I'm a **20-year-old 3nd-year Industrial Engineering student** at the **Universitat Politècnica de València (UPV)** in Spain. 
 
 I am self-taught in **Python**, and my long-term goal as an industrial engineer is to connect Python with real-world engineering problems, data analysis, and process optimization. However, I happened to own a personal domain (`ruizacademy.es`) from a previous project and I didn't want to let it go to waste.
 

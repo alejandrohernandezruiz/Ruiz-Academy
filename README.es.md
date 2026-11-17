@@ -13,7 +13,7 @@ Desarrollado por un estudiante de ingeniería, para estudiantes de ingeniería.
 
 ## 💡 Sobre el Proyecto y Mi Historia (Transparencia Total)
 
-¡Hola! Soy un **estudiante de Ingeniería Industrial de 20 años**, actualmente en **2.º de carrera** en la **Universitat Politècnica de València (UPV)**.
+¡Hola! Soy un **estudiante de Ingeniería Industrial de 20 años**, actualmente en **3.º de carrera** en la **Universitat Politècnica de València (UPV)**.
 
 Soy autodidacta con el lenguaje de programación **Python** y mi objetivo a largo plazo como ingeniero industrial es conectar Python con problemas reales de ingeniería, análisis de datos y optimización de procesos. Sin embargo, tenía un dominio web personal comprado (`ruizacademy.es`) de un proyecto anterior y no quería desperdiciarlo.
 
