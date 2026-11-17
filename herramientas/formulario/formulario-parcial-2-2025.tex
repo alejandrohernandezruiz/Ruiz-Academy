@@ -1,0 +1,243 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[spanish,es-noshorthands]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage[a4paper,margin=1.7cm,top=2.1cm,bottom=2cm]{geometry}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[skins]{tcolorbox}
+
+\definecolor{ink}{HTML}{0F2A47}
+\definecolor{signal}{HTML}{F2C200}
+
+\tcbset{itembox/.style={colback=white,colframe=ink!30,boxrule=0.5pt,arc=1.2mm,
+  left=8pt,right=8pt,top=4pt,bottom=4pt,before skip=7pt,after skip=0pt}}
+
+\setlength{\parindent}{0pt}
+\setlength{\abovedisplayskip}{5pt}
+\setlength{\belowdisplayskip}{5pt}
+\setlength{\abovedisplayshortskip}{3pt}
+\setlength{\belowdisplayshortskip}{3pt}
+
+\newcommand{\tema}[2]{\vspace{1.1em}{\large\bfseries\color{ink}Tema #1\quad #2}\par\vspace{1pt}{\color{signal}\rule{\linewidth}{1.4pt}}\par\vspace{-2pt}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyhead[L]{\small Formulario de REM -- Parcial 2}
+\fancyhead[R]{\small ruizacademy.es}
+\fancyfoot[L]{\footnotesize Formulario orientativo elaborado por un alumno (Curso 2025)}
+\fancyfoot[R]{\small\thepage}
+
+\begin{document}
+
+\begin{tcolorbox}[colback=ink,colframe=ink,coltext=white,arc=1.5mm,boxrule=0pt,left=10pt,right=10pt,top=8pt,bottom=8pt]
+{\Large\bfseries Formulario de REM}\\[3pt]
+{\large Parcial 2 $\cdot$ Temas 7 a 10 $\cdot$ Curso 2025}
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced,colback=signal!14,colframe=signal!14,boxrule=0pt,arc=0mm,
+  borderline west={3pt}{0pt}{signal},left=9pt,right=8pt,top=5pt,bottom=5pt,before skip=8pt]
+\small Formulario orientativo elaborado por un alumno (Curso 2025). Puede contener variaciones respecto al temario actual si los profesores modifican criterios. Úsalo como guía de apoyo.
+\end{tcolorbox}
+
+\tema{7}{Flexión}
+
+\begin{tcolorbox}[itembox]
+\textbf{Momentos de inercia del rectángulo}\par
+\[
+I_z=\dfrac{1}{12}\,b\,h^{3}\qquad I_y=\dfrac{1}{12}\,b^{3}\,h
+\]
+{\small\begin{itemize}[leftmargin=*,nosep,label={--}]
+\item $b$: dimensión paralela al eje $z$ (base).
+\item $h$: dimensión paralela al eje $y$ (altura).
+\end{itemize}}
+\end{tcolorbox}
+
+\begin{tcolorbox}[itembox]
+\textbf{Momento de inercia del círculo hueco}\par
+\[
+I_z=\dfrac{\pi}{4}\left(R_{\text{ext}}^{4}-R_{\text{int}}^{4}\right)
+\]
+\smallskip\noindent{\small\itshape Círculo macizo ($R_{\text{int}}=0$): $I_z=\pi R^{4}/4$.}\par
+\end{tcolorbox}
+
+\begin{tcolorbox}[itembox]
+\textbf{Ley de Navier}\par
+\[
+\sigma_x=\dfrac{N(x)}{A(x)}-\dfrac{M_z(x)}{I_z(x)}\,y+\dfrac{M_y(x)}{I_y(x)}\,z
+\]
+\end{tcolorbox}
+
+\begin{tcolorbox}[itembox]
+\textbf{Flexión simétrica}\par
+\[
+\begin{aligned}M_z:\quad\sigma_x&=-\dfrac{M_z(x)}{I_z(x)}\,y\\ M_y:\quad\sigma_x&=\dfrac{M_y(x)}{I_y(x)}\,z\end{aligned}
+\]
+\end{tcolorbox}
+
+\begin{tcolorbox}[itembox]
+\textbf{Tensión máxima en flexión}\par
+\[
+|\sigma_{\max}|=\dfrac{|M|_{\max}}{I}\,|y|_{\max}\le\sigma_e
+\]
+\end{tcolorbox}
+
+\begin{tcolorbox}[itembox]
+\textbf{Ejemplo: ménsula rectangular con carga en el extremo}\par
+\[
+|\sigma_{\max}|=\left|-\dfrac{-PL}{\frac{1}{12}bh^{3}}\right|\cdot\left|\pm\dfrac{h}{2}\right|=\dfrac{6PL}{bh^{2}}\le\sigma_e
+\]
+{\small\begin{itemize}[leftmargin=*,nosep,label={--}]
+\item $M_z=-PL$ en el empotramiento.
+\item $P$: carga en el extremo libre; $L$: longitud de la ménsula.
+\end{itemize}}
+\end{tcolorbox}
+
+\begin{tcolorbox}[itembox]
+\textbf{Línea neutra}\par
+\smallskip\noindent Lugar geométrico de la sección donde $\sigma_x=0$.\par
+\end{tcolorbox}
+
+\begin{tcolorbox}[itembox]
+\textbf{Flexión desviada}\par
+\[
+\begin{aligned}\sigma_x&=-\dfrac{M_z(x)}{I_z(x)}\,y+\dfrac{M_y(x)}{I_y(x)}\,z\\ \text{LN:}\quad y&=\dfrac{M_y}{M_z}\,\dfrac{I_z}{I_y}\,z=\tan\alpha\,\dfrac{I_z}{I_y}\,z=\tan\beta\,z\end{aligned}
+\]
+{\small\begin{itemize}[leftmargin=*,nosep,label={--}]
+\item $\tan\alpha=M_y/M_z$.
+\item $\tan\beta=\tan\alpha\,I_z/I_y$: pendiente de la línea neutra.
+\end{itemize}}
+\smallskip\noindent{\small\itshape Si $I_z>I_y$, entonces $\beta>\alpha$.}\par
+\end{tcolorbox}
+
+\begin{tcolorbox}[itembox]
+\textbf{Flexión compuesta}\par
+\[
+\begin{aligned}\sigma_x&=\dfrac{N(x)}{A(x)}-\dfrac{M_z(x)}{I_z(x)}\,y+\dfrac{M_y(x)}{I_y(x)}\,z\\ \text{LN:}\quad y&=\dfrac{I_z}{M_z}\left(\dfrac{N}{A}+\dfrac{M_y}{I_y}\,z\right)\end{aligned}
+\]
+\end{tcolorbox}
+
+\tema{8}{Flexión transversal}
+
+\begin{tcolorbox}[itembox]
+\textbf{Tensión tangencial en sección llena}\par
+\[
+\tau_{xy}(y)=\dfrac{V_y\,S_z^{*}(y)}{I_z\,b(y)}
+\]
+{\small\begin{itemize}[leftmargin=*,nosep,label={--}]
+\item $V_y$: esfuerzo cortante.
+\item $S_z^{*}(y)$: momento estático respecto a $z$ del área situada a un lado de la cota $y$.
+\item $b(y)$: ancho de la sección a la cota $y$.
+\end{itemize}}
+\end{tcolorbox}
+
+\begin{tcolorbox}[itembox]
+\textbf{Tensión tangencial en pared delgada}\par
+\[
+\tau_{xs}(s)=\dfrac{V_y\,S_z^{*}(s)}{I_z\,t(s)}
+\]
+{\small\begin{itemize}[leftmargin=*,nosep,label={--}]
+\item $s$: coordenada a lo largo de la línea media.
+\item $t(s)$: espesor de la pared.
+\end{itemize}}
+\end{tcolorbox}
+
+\tema{9}{Torsión}
+
+\begin{tcolorbox}[itembox]
+\textbf{Torsión de perfiles circulares (ley de Coulomb)}\par
+\[
+\begin{aligned}\tau_{x\theta}&=G\,r\,\theta\\ G\,\theta&=\dfrac{M_T}{I_p}\\ \tau_{x\theta}&=\dfrac{M_T}{I_p}\,r\end{aligned}
+\]
+{\small\begin{itemize}[leftmargin=*,nosep,label={--}]
+\item $\theta$: ángulo de torsión por unidad de longitud.
+\item $r$: distancia al centro de la sección.
+\item $I_p$: momento de inercia polar.
+\end{itemize}}
+\end{tcolorbox}
+
+\begin{tcolorbox}[itembox]
+\textbf{Momento de inercia polar de la sección circular}\par
+\[
+I_p=I_y+I_z=\dfrac{\pi R^{4}}{4}+\dfrac{\pi R^{4}}{4}=\dfrac{\pi R^{4}}{2}
+\]
+\smallskip\noindent{\small\itshape En los apuntes se escribe $I_x$ (momento respecto al eje longitudinal).}\par
+\end{tcolorbox}
+
+\begin{tcolorbox}[itembox]
+\textbf{Torsión de perfiles cerrados}\par
+\[
+J=\dfrac{4A_0^{2}}{\displaystyle\oint\dfrac{ds}{t(s)}}\qquad \tau_{xs}=\dfrac{M_T}{2A_0\,t}
+\]
+{\small\begin{itemize}[leftmargin=*,nosep,label={--}]
+\item $A_0$: área encerrada por la línea media.
+\item $t$: espesor de la pared.
+\end{itemize}}
+\end{tcolorbox}
+
+\begin{tcolorbox}[itembox]
+\textbf{Torsión de perfiles abiertos}\par
+\[
+J=\sum_i\dfrac{1}{3}\,b_i\,t_i^{3}\qquad \tau_{xs}=\dfrac{2M_T}{J}\,z^{*}
+\]
+{\small\begin{itemize}[leftmargin=*,nosep,label={--}]
+\item $b_i,\ t_i$: longitud y espesor del tramo $i$.
+\item $z^{*}$: distancia a la línea media del tramo, medida en el espesor.
+\end{itemize}}
+\end{tcolorbox}
+
+\tema{10}{Criterios de fallo y relaciones elásticas}
+
+\begin{tcolorbox}[itembox]
+\textbf{Teorías de fallo}\par
+{\renewcommand{\arraystretch}{1.3}\begin{tabular}{p{0.3\linewidth}p{0.36\linewidth}p{0.22\linewidth}}
+\hline
+\textbf{Criterio} & \textbf{Se basa en} & \textbf{Material} \\
+\hline
+William Rankine & Tensión normal máxima & Frágiles \\
+\hline
+E. Tresca & Tensión tangencial máxima & Dúctiles \\
+\hline
+Von Mises & Energía de distorsión máxima & Dúctiles \\
+\hline
+Mohr y Coulomb & Fricción interna & Suelos \\
+\hline
+O. Mohr & Resistencia estática & Pétreos \\
+\\\hline
+\end{tabular}}
+\end{tcolorbox}
+
+\begin{tcolorbox}[itembox]
+\textbf{Criterio de Von Mises}\par
+\[
+\begin{aligned}\sigma_{eq}&=\sqrt{\tfrac{1}{2}\left[(\sigma_1-\sigma_2)^{2}+(\sigma_2-\sigma_3)^{2}+(\sigma_3-\sigma_1)^{2}\right]}\le\sigma_e\\ \sigma_{eq}&=\sqrt{\sigma_x^{2}-\sigma_x\sigma_y+\sigma_y^{2}+3\tau_{xy}^{2}}\quad\text{(estado plano)}\\ \sigma_{eq}&=\sqrt{\sigma_x^{2}+3\tau_{xy}^{2}}\quad\text{(si }\sigma_y=0\text{)}\end{aligned}
+\]
+\smallskip\noindent{\small\itshape Corrección sobre los apuntes: la forma $\sqrt{\sigma_x^{2}+3\tau_{xy}^{2}}$ solo es válida si $\sigma_y=\sigma_z=0$ (por ejemplo, flexión con cortante en vigas). En un estado plano general se usa la segunda expresión.}\par
+\end{tcolorbox}
+
+\begin{tcolorbox}[itembox]
+\textbf{Recordar: leyes de Hooke generalizadas}\par
+\[
+\begin{aligned}\varepsilon_x&=\dfrac{1}{E}\left[\sigma_x-\nu\,(\sigma_y+\sigma_z)\right]\\ \varepsilon_y&=\dfrac{1}{E}\left[\sigma_y-\nu\,(\sigma_x+\sigma_z)\right]\\ \varepsilon_z&=\dfrac{1}{E}\left[\sigma_z-\nu\,(\sigma_x+\sigma_y)\right]\end{aligned}
+\]
+\end{tcolorbox}
+
+\begin{tcolorbox}[itembox]
+\textbf{Recordar: constantes elásticas}\par
+\[
+\begin{aligned}\nu&=-\dfrac{\varepsilon_{\text{transversal}}}{\varepsilon_{\text{longitudinal}}}\\ E&=\dfrac{\sigma}{\varepsilon}\\ G&=\dfrac{\tau}{\gamma}\\ G&=\dfrac{E}{2(1+\nu)}\end{aligned}
+\]
+\end{tcolorbox}
+
+\begin{tcolorbox}[itembox]
+\textbf{Recordar: ecuaciones de Lamé (tensión plana)}\par
+\[
+\begin{aligned}\sigma_x&=\dfrac{E}{1-\nu^{2}}\,(\varepsilon_x+\nu\,\varepsilon_y)\\ \sigma_y&=\dfrac{E}{1-\nu^{2}}\,(\varepsilon_y+\nu\,\varepsilon_x)\end{aligned}
+\]
+\end{tcolorbox}
+
+\end{document}

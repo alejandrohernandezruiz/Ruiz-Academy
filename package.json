@@ -1,0 +1,11 @@
+{
+  "name": "ruizacademy",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Herramientas de cálculo para estudiantes de ingeniería (ruizacademy.es)",
+  "scripts": {
+    "test": "node --test",
+    "latex": "node scripts/build-latex.mjs"
+  }
+}

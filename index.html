@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RuizAcademy: herramientas de cálculo para estudiantes de ingeniería</title>
+  <meta name="description" content="Herramientas gratuitas para Estructuras y REM: diagramas de cortante y flector, círculo de Mohr y formulario de fórmulas. Sin registro y desde el móvil.">
+  <meta name="theme-color" content="#edf1f5">
+  <meta property="og:title" content="RuizAcademy: herramientas de cálculo para estudiantes de ingeniería UPV">
+  <meta property="og:description" content="Diagramas de vigas, círculo de Mohr y formulario. Introduce los datos y obtén el resultado al instante.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%230f2a47'/%3E%3Cpath d='M4 12h24' stroke='%23f2c200' stroke-width='4'/%3E%3Cpath d='M16 14l-7 11h14z' fill='none' stroke='%23fff' stroke-width='2'/%3E%3C/svg%3E">
+
+  <!-- evitar el parpadeo cambio de modo claro / oscuro -->
+  <script>
+    (function () {
+      var theme = null;
+      try { theme = localStorage.getItem("ruizacademy-theme"); } catch (e) {}
+      if (theme !== "light" && theme !== "dark") {
+        theme = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      }
+      document.documentElement.dataset.theme = theme;
+    })();
+  </script>
+
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/tools.css">
+  <script type="module" src="assets/js/common.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="./" aria-label="RuizAcademy, inicio">
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+          <rect width="32" height="32" rx="4" fill="#0f2a47"/>
+          <path d="M4 12h24" stroke="#f2c200" stroke-width="4"/>
+          <path d="M16 14l-7 11h14z" fill="none" stroke="#ffffff" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+        RuizAcademy
+      </a>
+      <nav class="nav" aria-label="Principal">
+        <a href="#herramientas">Herramientas</a>
+        <a href="#proyecto">Proyecto</a>
+        <button class="btn btn-ghost btn-icon theme-toggle" type="button" data-theme-toggle aria-label="Cambiar a modo oscuro">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <div class="container">
+      <section class="hero" aria-labelledby="titulo-principal">
+        <div class="hero__text">
+          <h1 id="titulo-principal">Calcula Estructuras y REM sin pelearte con la calculadora</h1>
+          <p>Herramientas gratuitas para estudiantes de ingeniería. Introduce los datos del ejercicio y obtén el diagrama o el resultado al instante, también desde el móvil.</p>
+          <a class="btn btn-primary" href="#herramientas">Ver herramientas</a>
+        </div>
+
+        <!-- Demo en vivo: viga biapoyada de 6 m con una carga de 10 kN -->
+        <div class="sheet demo" data-beam-demo>
+          <p class="demo__title">Mueve la carga y mira cómo cambian V y M</p>
+          <svg class="plot-svg" viewBox="0 0 480 312" role="img" aria-label="Viga biapoyada de 6 metros con una carga puntual de 10 kilonewtons y sus diagramas de cortante y flector">
+            <!-- Viga y apoyos -->
+            <line class="plot-beam" x1="30" y1="72" x2="450" y2="72"/>
+            <path class="plot-support" d="M30 76L19 98H41Z"/>
+            <line class="plot-support" x1="12" y1="98" x2="48" y2="98"/>
+            <path class="plot-support" d="M450 76L439 94H461Z"/>
+            <circle class="plot-support" cx="450" cy="98" r="3.5"/>
+            <line class="plot-support" x1="432" y1="102" x2="468" y2="102"/>
+
+            <!-- Carga puntual -->
+            <g data-demo-load transform="translate(170 0)">
+              <line class="plot-load" x1="0" y1="26" x2="0" y2="66"/>
+              <path class="plot-load" d="M-6 56L0 68L6 56"/>
+              <text class="plot-value" x="0" y="18" text-anchor="middle">10 kN</text>
+            </g>
+
+            <!-- Cortante -->
+            <text x="30" y="122">Cortante V</text>
+            <line class="plot-axis" x1="30" y1="160" x2="450" y2="160"/>
+            <path class="plot-shear-fill fade" data-demo-shear-fill d=""/>
+            <path class="plot-shear-line draw" data-demo-shear pathLength="1" d=""/>
+
+            <!-- Flector (positivo hacia abajo, lado traccionado) -->
+            <text x="30" y="216">Flector M</text>
+            <line class="plot-axis" x1="30" y1="232" x2="450" y2="232"/>
+            <path class="plot-moment-fill fade" data-demo-moment-fill d=""/>
+            <path class="plot-moment-line draw" data-demo-moment pathLength="1" d=""/>
+            <text class="plot-value" data-demo-moment-label x="170" y="300" text-anchor="middle"></text>
+          </svg>
+
+          <div class="field">
+            <label class="label" for="demo-posicion">Posición de la carga</label>
+            <input id="demo-posicion" type="range" min="0.5" max="5.5" step="0.1" value="2" data-demo-range>
+          </div>
+
+          <dl class="results">
+            <div class="stat"><dt>Reacción en A</dt><dd><span data-out="ra">0,00</span> <small>kN</small></dd></div>
+            <div class="stat"><dt>Reacción en B</dt><dd><span data-out="rb">0,00</span> <small>kN</small></dd></div>
+            <div class="stat"><dt>Flector máximo</dt><dd><span data-out="mmax">0,00</span> <small>kN·m</small></dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="section" id="herramientas" aria-labelledby="titulo-herramientas">
+        <div class="section__head">
+          <h2 id="titulo-herramientas">Herramientas</h2>
+          <p class="muted">Elige la que necesites. Cada una te pide solo los datos del ejercicio.</p>
+        </div>
+
+        <div class="tool-grid">
+          <a class="sheet tool-card" href="herramientas/vigas/">
+            <div class="tool-card__body">
+              <svg class="tool-card__icon" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" aria-hidden="true">
+                <path d="M6 18h44"/>
+                <path d="M10 22l-5 9h10z"/>
+                <path d="M46 22l-5 9h10z"/>
+                <path d="M6 44h14l8-10 8 10h14"/>
+              </svg>
+              <h3>Diagramas de cortante y flector</h3>
+              <p>Define la viga, los apoyos y las cargas. Obtén las reacciones y los diagramas con los valores máximos marcados.</p>
+            </div>
+            <dl class="titleblock">
+              <div><dt>Asignatura</dt><dd>Estructuras</dd></div>
+              <div><dt>Datos</dt><dd>Cargas</dd></div>
+              <div><dt>Estado</dt><dd><span class="badge">Activa</span></dd></div>
+            </dl>
+          </a>
+
+          <a class="sheet tool-card" href="herramientas/mohr/">
+            <div class="tool-card__body">
+              <svg class="tool-card__icon" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+                <path d="M6 28h44M28 6v44"/>
+                <circle cx="34" cy="28" r="14"/>
+                <path d="M24 20l20 16" stroke-dasharray="4 4"/>
+              </svg>
+              <h3>Círculo de Mohr 2D</h3>
+              <p>Introduce las tensiones del punto y calcula tensiones principales, cortante máximo y orientación de los planos.</p>
+            </div>
+            <dl class="titleblock">
+              <div><dt>Asignatura</dt><dd>REM</dd></div>
+              <div><dt>Datos</dt><dd>σx, σy y τxy</dd></div>
+              <div><dt>Estado</dt><dd><span class="badge">Activa</span></dd></div>
+            </dl>
+          </a>
+
+          <a class="sheet tool-card" href="herramientas/formulario/">
+            <div class="tool-card__body">
+              <svg class="tool-card__icon" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M44 10H14l16 18-16 18h30"/>
+              </svg>
+              <h3>Formulario para Examen</h3>
+              <p>Busca por palabra clave y encuentra la fórmula con sus variables y unidades explicadas.</p>
+            </div>
+            <dl class="titleblock">
+              <div><dt>Asignatura</dt><dd>Varias</dd></div>
+              <div><dt>Datos</dt><dd>Palabra clave</dd></div>
+              <div><dt>Estado</dt><dd><span class="badge">Activa</span></dd></div>
+            </dl>
+          </a>
+        </div>
+      </section>
+
+      <section class="section" id="proyecto" aria-labelledby="titulo-proyecto">
+        <div class="section__head">
+          <h2 id="titulo-proyecto">El proyecto</h2>
+          <p class="muted">Hecho por un estudiante de Ingeniería Industrial para sus compañeros.</p>
+        </div>
+
+        <ul class="principles">
+          <li><strong>Cálculo en tu navegador</strong><span>Los datos que introduces no salen de tu dispositivo.</span></li>
+          <li><strong>Sin registro</strong><span>Abre la herramienta, escribe los datos y úsala.</span></li>
+          <li><strong>Pensado para el móvil</strong><span>Funciona igual desde el teléfono, en el pasillo o en la biblioteca.</span></li>
+        </ul>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span data-year>2026</span> RuizAcademy. Proyecto independiente de un estudiante, sin afiliación con la Universitat Politècnica de València. Contrasta siempre los resultados con tus apuntes y con tu profesorado.</p>
+    </div>
+  </footer>
+</body>
+</html>

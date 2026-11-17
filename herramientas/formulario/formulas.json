@@ -1,0 +1,338 @@
+{
+  "meta": {
+    "titulo": "Formulario de REM",
+    "curso": 2025,
+    "aviso": "Formulario orientativo elaborado por un alumno (Curso 2025). Puede contener variaciones respecto al temario actual si los profesores modifican criterios. Úsalo como guía de apoyo."
+  },
+  "parciales": [
+    {
+      "id": "parcial-1",
+      "nombre": "Parcial 1",
+      "temas": [
+        {
+          "numero": 1,
+          "titulo": "Hipótesis y principios generales",
+          "items": [
+            {
+              "titulo": "Hipótesis simplificativas",
+              "lista": [
+                "**Continuidad**: la distribución de la materia se asume continua.",
+                "**Homogeneidad**: las propiedades físicas son constantes.",
+                "**Isotropía**: las propiedades mecánicas no dependen de la dirección del espacio."
+              ]
+            },
+            {
+              "titulo": "Principio de Saint-Venant",
+              "texto": "Cuando dos sistemas equivalentes (misma resultante y mismo momento) se aplican sobre una misma zona, la diferencia entre ambos desaparece a medida que nos alejamos del punto de aplicación."
+            },
+            {
+              "titulo": "Principios de partida",
+              "lista": ["Principio de los pequeños desplazamientos.", "Principio de superposición de acciones."]
+            }
+          ]
+        },
+        {
+          "numero": 2,
+          "titulo": "Elasticidad lineal en barras",
+          "items": [
+            {
+              "titulo": "Hipótesis de Bernoulli",
+              "texto": "Las secciones transversales de una barra, inicialmente planas y perpendiculares a la directriz, continúan siéndolo después de la deformación axial."
+            },
+            {
+              "titulo": "Tensión normal",
+              "latex": "\\sigma=\\dfrac{F}{S}",
+              "donde": ["$F$: fuerza axial.", "$S$: área de la sección."]
+            },
+            {
+              "titulo": "Deformación unitaria",
+              "latex": "\\varepsilon=\\dfrac{\\Delta L}{L_0}",
+              "donde": ["$\\Delta L$: alargamiento.", "$L_0$: longitud inicial."]
+            },
+            {
+              "titulo": "Ley de Hooke",
+              "latex": "\\begin{aligned}\\sigma&=E\\,\\varepsilon\\\\ \\tau&=G\\,\\gamma\\end{aligned}",
+              "donde": ["$E$: módulo de elasticidad.", "$G$: módulo de elasticidad transversal.", "$\\gamma$: distorsión angular."],
+              "claves": "young módulo elasticidad"
+            },
+            {
+              "titulo": "Tensión tangencial media",
+              "latex": "\\tau_{\\text{prom}}=\\dfrac{V}{A}",
+              "donde": ["$V$: esfuerzo cortante.", "$A$: área de la sección."]
+            },
+            {
+              "titulo": "Coeficiente de Poisson",
+              "latex": "\\nu=-\\dfrac{\\varepsilon_{\\text{lateral}}}{\\varepsilon_{\\text{longitudinal}}}"
+            },
+            {
+              "titulo": "Relación entre módulos elásticos",
+              "latex": "G=\\dfrac{E}{2(1+\\nu)}"
+            }
+          ]
+        },
+        {
+          "numero": 3,
+          "titulo": "Estado tensional y círculo de Mohr",
+          "items": [
+            {
+              "titulo": "Vector tensión sobre un plano",
+              "latex": "\\begin{aligned}\\vec T_m&=(\\sigma_m,\\tau_m)\\\\ \\sigma_m&=\\vec f_p^{\\,\\pi}\\cdot\\vec m\\\\ \\tau_m&=\\pm\\sqrt{\\vec f_p^{\\,\\pi}\\cdot\\vec f_p^{\\,\\pi}-\\sigma_m^{2}}\\end{aligned}",
+              "donde": [
+                "$\\vec f_p^{\\,\\pi}$: vector tensión en el punto $P$ sobre el plano $\\pi$.",
+                "$\\vec m$: normal unitaria del plano.",
+                "$\\sigma_m,\\ \\tau_m$: componentes normal y tangencial."
+              ]
+            },
+            {
+              "titulo": "Teorema de reciprocidad de Cauchy",
+              "texto": "Las tensiones tangenciales en superficies que forman un ángulo diedro de $90^\\circ$ son iguales en módulo y sus sentidos convergen o divergen de la arista común.",
+              "latex": "\\tau_{xy}=\\tau_{yx}"
+            },
+            {
+              "titulo": "Tensor de tensiones",
+              "latex": "[\\sigma]_{xyz}=\\begin{bmatrix}\\sigma_x&\\tau_{xy}&\\tau_{xz}\\\\ \\tau_{yx}&\\sigma_y&\\tau_{yz}\\\\ \\tau_{zx}&\\tau_{zy}&\\sigma_z\\end{bmatrix}"
+            },
+            {
+              "titulo": "Fórmula de Cauchy",
+              "latex": "\\begin{aligned}\\begin{Bmatrix}t_x\\\\ t_y\\end{Bmatrix}&=\\begin{bmatrix}\\sigma_x&\\tau_{xy}\\\\ \\tau_{xy}&\\sigma_y\\end{bmatrix}\\begin{Bmatrix}\\cos\\alpha\\\\ \\cos\\beta\\end{Bmatrix}\\\\ \\vec f_p^{\\,\\pi}&=[\\sigma]_{xy}\\,\\{m_\\pi\\}\\end{aligned}",
+              "donde": ["$\\cos\\alpha,\\ \\cos\\beta$: cosenos directores de la normal del plano."]
+            },
+            {
+              "titulo": "Invariantes del estado tensional",
+              "latex": "\\begin{aligned}I_1&=\\sigma_x+\\sigma_y=\\sigma_1+\\sigma_2\\\\ I_2&=\\begin{vmatrix}\\sigma_x&\\tau_{xy}\\\\ \\tau_{yx}&\\sigma_y\\end{vmatrix}=\\det[\\sigma]_{xy}\\end{aligned}"
+            },
+            {
+              "titulo": "Tensiones principales",
+              "latex": "\\begin{aligned}\\sigma_1&=\\dfrac{\\sigma_x+\\sigma_y}{2}+\\sqrt{\\left(\\dfrac{\\sigma_x-\\sigma_y}{2}\\right)^{2}+\\tau_{xy}^{2}}\\\\ \\sigma_2&=\\dfrac{\\sigma_x+\\sigma_y}{2}-\\sqrt{\\left(\\dfrac{\\sigma_x-\\sigma_y}{2}\\right)^{2}+\\tau_{xy}^{2}}\\end{aligned}",
+              "claves": "principales máxima mínima"
+            },
+            {
+              "titulo": "Cambio de base del tensor de tensiones",
+              "latex": "[\\sigma]_{xy}=[R]^{T}\\,[\\sigma]_{12}\\,[R]",
+              "nota": "$[R]$: matriz de giro cuyas filas son los ejes principales 1 y 2 expresados en $xy$."
+            },
+            {
+              "titulo": "Círculo de Mohr",
+              "latex": "\\begin{aligned}C&=\\left(\\dfrac{\\sigma_x+\\sigma_y}{2},\\,0\\right)\\\\ R&=\\sqrt{\\left(\\dfrac{\\sigma_x-\\sigma_y}{2}\\right)^{2}+\\tau_{xy}^{2}}\\\\ \\left|\\tan 2\\theta\\right|&=\\left|\\dfrac{\\tau_{xy}}{\\dfrac{\\sigma_x-\\sigma_y}{2}}\\right|\\end{aligned}",
+              "nota": "El radio es la tensión tangencial máxima en el plano: $\\tau_{\\max}=R$. El signo de $\\tau_{xy}$ y de $\\sigma_x-\\sigma_y$ fija el cuadrante de $2\\theta$.",
+              "claves": "centro radio mohr circulo"
+            },
+            {
+              "titulo": "Ecuaciones de tensión plana",
+              "latex": "\\begin{aligned}\\sigma_m&=\\dfrac{\\sigma_x+\\sigma_y}{2}+\\dfrac{\\sigma_x-\\sigma_y}{2}\\cos2\\theta+\\tau_{xy}\\sin2\\theta\\\\ \\tau_m&=\\dfrac{\\sigma_x-\\sigma_y}{2}\\sin2\\theta-\\tau_{xy}\\cos2\\theta\\end{aligned}",
+              "nota": "$\\theta$: ángulo antihorario desde el eje $x$ hasta la normal del plano. Con este convenio $\\tau_m$ es positiva cuando tiende a girar el elemento en sentido horario (signo contrario al de la expresión habitual de $\\tau_{x'y'}$).",
+              "claves": "rotación giro mohr"
+            }
+          ]
+        },
+        {
+          "numero": 4,
+          "titulo": "Deformaciones y extensometría",
+          "items": [
+            {
+              "titulo": "Tensor de deformaciones",
+              "latex": "[\\varepsilon]_{xyz}=\\begin{bmatrix}\\varepsilon_x&\\tfrac12\\gamma_{xy}&\\tfrac12\\gamma_{xz}\\\\ \\tfrac12\\gamma_{xy}&\\varepsilon_y&\\tfrac12\\gamma_{yz}\\\\ \\tfrac12\\gamma_{xz}&\\tfrac12\\gamma_{yz}&\\varepsilon_z\\end{bmatrix}"
+            },
+            {
+              "titulo": "Cambio de base del tensor de deformaciones",
+              "latex": "[\\varepsilon]_{xyz}=[R]^{T}\\,[\\varepsilon]_{123}\\,[R]"
+            },
+            {
+              "titulo": "Deformación según una dirección",
+              "latex": "\\begin{aligned}\\vec\\varepsilon_P^{\\,m}&=[\\varepsilon]\\cdot\\vec m\\\\ \\varepsilon_m&=\\vec\\varepsilon\\cdot\\vec m\\\\ \\tfrac12\\gamma_m&=\\sqrt{\\vec\\varepsilon\\cdot\\vec\\varepsilon-\\varepsilon_m^{2}}\\end{aligned}"
+            },
+            {
+              "titulo": "Ecuaciones de deformación plana",
+              "latex": "\\begin{aligned}\\varepsilon_m&=\\dfrac{\\varepsilon_x+\\varepsilon_y}{2}+\\dfrac{\\varepsilon_x-\\varepsilon_y}{2}\\cos2\\theta+\\tfrac12\\gamma_{xy}\\sin2\\theta\\\\ \\tfrac12\\gamma_m&=\\dfrac{\\varepsilon_x-\\varepsilon_y}{2}\\sin2\\theta-\\tfrac12\\gamma_{xy}\\cos2\\theta\\end{aligned}"
+            },
+            {
+              "titulo": "Extensometría",
+              "texto": "Técnica de medida de deformaciones longitudinales basada en el efecto piezorresistivo de un material conductor."
+            },
+            {
+              "titulo": "Efecto piezorresistivo",
+              "texto": "Variación de la resistencia de un cable conductor cuando se deforma por acciones mecánicas.",
+              "latex": "R=\\rho\\,\\dfrac{L}{A}",
+              "donde": ["$\\rho$: resistividad del material.", "$L$: longitud del conductor.", "$A$: área de su sección."]
+            },
+            {
+              "titulo": "Galga extensométrica",
+              "texto": "Dispositivo que mide de forma indirecta la deformación longitudinal en el punto del sólido elástico donde se adhiere, en la dirección de su eje."
+            },
+            {
+              "titulo": "Roseta",
+              "texto": "Dispositivo formado por varias galgas que permite obtener las deformaciones longitudinales en un punto para varias direcciones."
+            }
+          ]
+        },
+        {
+          "numero": 5,
+          "titulo": "Ley de Hooke generalizada y ecuaciones de Lamé",
+          "items": [
+            {
+              "titulo": "Material isótropo",
+              "texto": "Misma dirección de tensión y deformación, e independencia entre tensiones normales y deformaciones transversales."
+            },
+            {
+              "titulo": "Leyes de Hooke generalizadas",
+              "latex": "\\begin{aligned}\\varepsilon_x&=\\dfrac{1}{E}\\left[\\sigma_x-\\nu\\,(\\sigma_y+\\sigma_z)\\right]\\\\ \\varepsilon_y&=\\dfrac{1}{E}\\left[\\sigma_y-\\nu\\,(\\sigma_x+\\sigma_z)\\right]\\\\ \\varepsilon_z&=\\dfrac{1}{E}\\left[\\sigma_z-\\nu\\,(\\sigma_x+\\sigma_y)\\right]\\end{aligned}",
+              "claves": "young poisson"
+            },
+            {
+              "titulo": "Ecuaciones de Lamé",
+              "latex": "\\begin{aligned}\\sigma_x&=2G\\,\\varepsilon_x+\\lambda\\,e\\\\ \\sigma_y&=2G\\,\\varepsilon_y+\\lambda\\,e\\\\ \\sigma_z&=2G\\,\\varepsilon_z+\\lambda\\,e\\\\ \\lambda&=\\dfrac{\\nu E}{(1-2\\nu)(1+\\nu)}\\\\ e&=\\varepsilon_x+\\varepsilon_y+\\varepsilon_z\\end{aligned}"
+            },
+            {
+              "titulo": "Ecuaciones de Lamé en tensión plana",
+              "latex": "\\begin{aligned}\\sigma_x&=\\dfrac{E}{1-\\nu^{2}}\\,(\\varepsilon_x+\\nu\\,\\varepsilon_y)\\\\ \\sigma_y&=\\dfrac{E}{1-\\nu^{2}}\\,(\\varepsilon_y+\\nu\\,\\varepsilon_x)\\end{aligned}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "parcial-2",
+      "nombre": "Parcial 2",
+      "temas": [
+        {
+          "numero": 7,
+          "titulo": "Flexión",
+          "items": [
+            {
+              "titulo": "Momentos de inercia del rectángulo",
+              "latex": "I_z=\\dfrac{1}{12}\\,b\\,h^{3}\\qquad I_y=\\dfrac{1}{12}\\,b^{3}\\,h",
+              "donde": ["$b$: dimensión paralela al eje $z$ (base).", "$h$: dimensión paralela al eje $y$ (altura)."]
+            },
+            {
+              "titulo": "Momento de inercia del círculo hueco",
+              "latex": "I_z=\\dfrac{\\pi}{4}\\left(R_{\\text{ext}}^{4}-R_{\\text{int}}^{4}\\right)",
+              "nota": "Círculo macizo ($R_{\\text{int}}=0$): $I_z=\\pi R^{4}/4$."
+            },
+            {
+              "titulo": "Ley de Navier",
+              "latex": "\\sigma_x=\\dfrac{N(x)}{A(x)}-\\dfrac{M_z(x)}{I_z(x)}\\,y+\\dfrac{M_y(x)}{I_y(x)}\\,z",
+              "claves": "tensión normal flexión"
+            },
+            {
+              "titulo": "Flexión simétrica",
+              "latex": "\\begin{aligned}M_z:\\quad\\sigma_x&=-\\dfrac{M_z(x)}{I_z(x)}\\,y\\\\ M_y:\\quad\\sigma_x&=\\dfrac{M_y(x)}{I_y(x)}\\,z\\end{aligned}"
+            },
+            {
+              "titulo": "Tensión máxima en flexión",
+              "latex": "|\\sigma_{\\max}|=\\dfrac{|M|_{\\max}}{I}\\,|y|_{\\max}\\le\\sigma_e"
+            },
+            {
+              "titulo": "Ejemplo: ménsula rectangular con carga en el extremo",
+              "latex": "|\\sigma_{\\max}|=\\left|-\\dfrac{-PL}{\\frac{1}{12}bh^{3}}\\right|\\cdot\\left|\\pm\\dfrac{h}{2}\\right|=\\dfrac{6PL}{bh^{2}}\\le\\sigma_e",
+              "donde": ["$M_z=-PL$ en el empotramiento.", "$P$: carga en el extremo libre; $L$: longitud de la ménsula."]
+            },
+            {
+              "titulo": "Línea neutra",
+              "texto": "Lugar geométrico de la sección donde $\\sigma_x=0$."
+            },
+            {
+              "titulo": "Flexión desviada",
+              "latex": "\\begin{aligned}\\sigma_x&=-\\dfrac{M_z(x)}{I_z(x)}\\,y+\\dfrac{M_y(x)}{I_y(x)}\\,z\\\\ \\text{LN:}\\quad y&=\\dfrac{M_y}{M_z}\\,\\dfrac{I_z}{I_y}\\,z=\\tan\\alpha\\,\\dfrac{I_z}{I_y}\\,z=\\tan\\beta\\,z\\end{aligned}",
+              "donde": ["$\\tan\\alpha=M_y/M_z$.", "$\\tan\\beta=\\tan\\alpha\\,I_z/I_y$: pendiente de la línea neutra."],
+              "nota": "Si $I_z>I_y$, entonces $\\beta>\\alpha$."
+            },
+            {
+              "titulo": "Flexión compuesta",
+              "latex": "\\begin{aligned}\\sigma_x&=\\dfrac{N(x)}{A(x)}-\\dfrac{M_z(x)}{I_z(x)}\\,y+\\dfrac{M_y(x)}{I_y(x)}\\,z\\\\ \\text{LN:}\\quad y&=\\dfrac{I_z}{M_z}\\left(\\dfrac{N}{A}+\\dfrac{M_y}{I_y}\\,z\\right)\\end{aligned}"
+            }
+          ]
+        },
+        {
+          "numero": 8,
+          "titulo": "Flexión transversal",
+          "items": [
+            {
+              "titulo": "Tensión tangencial en sección llena",
+              "latex": "\\tau_{xy}(y)=\\dfrac{V_y\\,S_z^{*}(y)}{I_z\\,b(y)}",
+              "donde": [
+                "$V_y$: esfuerzo cortante.",
+                "$S_z^{*}(y)$: momento estático respecto a $z$ del área situada a un lado de la cota $y$.",
+                "$b(y)$: ancho de la sección a la cota $y$."
+              ],
+              "claves": "cortante jourawski"
+            },
+            {
+              "titulo": "Tensión tangencial en pared delgada",
+              "latex": "\\tau_{xs}(s)=\\dfrac{V_y\\,S_z^{*}(s)}{I_z\\,t(s)}",
+              "donde": ["$s$: coordenada a lo largo de la línea media.", "$t(s)$: espesor de la pared."]
+            }
+          ]
+        },
+        {
+          "numero": 9,
+          "titulo": "Torsión",
+          "items": [
+            {
+              "titulo": "Torsión de perfiles circulares (ley de Coulomb)",
+              "latex": "\\begin{aligned}\\tau_{x\\theta}&=G\\,r\\,\\theta\\\\ G\\,\\theta&=\\dfrac{M_T}{I_p}\\\\ \\tau_{x\\theta}&=\\dfrac{M_T}{I_p}\\,r\\end{aligned}",
+              "donde": [
+                "$\\theta$: ángulo de torsión por unidad de longitud.",
+                "$r$: distancia al centro de la sección.",
+                "$I_p$: momento de inercia polar."
+              ],
+              "claves": "coulomb torsor"
+            },
+            {
+              "titulo": "Momento de inercia polar de la sección circular",
+              "latex": "I_p=I_y+I_z=\\dfrac{\\pi R^{4}}{4}+\\dfrac{\\pi R^{4}}{4}=\\dfrac{\\pi R^{4}}{2}",
+              "nota": "En los apuntes se escribe $I_x$ (momento respecto al eje longitudinal)."
+            },
+            {
+              "titulo": "Torsión de perfiles cerrados",
+              "latex": "J=\\dfrac{4A_0^{2}}{\\displaystyle\\oint\\dfrac{ds}{t(s)}}\\qquad \\tau_{xs}=\\dfrac{M_T}{2A_0\\,t}",
+              "donde": ["$A_0$: área encerrada por la línea media.", "$t$: espesor de la pared."],
+              "claves": "bredt pared delgada"
+            },
+            {
+              "titulo": "Torsión de perfiles abiertos",
+              "latex": "J=\\sum_i\\dfrac{1}{3}\\,b_i\\,t_i^{3}\\qquad \\tau_{xs}=\\dfrac{2M_T}{J}\\,z^{*}",
+              "donde": ["$b_i,\\ t_i$: longitud y espesor del tramo $i$.", "$z^{*}$: distancia a la línea media del tramo, medida en el espesor."]
+            }
+          ]
+        },
+        {
+          "numero": 10,
+          "titulo": "Criterios de fallo y relaciones elásticas",
+          "items": [
+            {
+              "titulo": "Teorías de fallo",
+              "tabla": {
+                "cabeceras": ["Criterio", "Se basa en", "Material"],
+                "filas": [
+                  ["William Rankine", "Tensión normal máxima", "Frágiles"],
+                  ["E. Tresca", "Tensión tangencial máxima", "Dúctiles"],
+                  ["Von Mises", "Energía de distorsión máxima", "Dúctiles"],
+                  ["Mohr y Coulomb", "Fricción interna", "Suelos"],
+                  ["O. Mohr", "Resistencia estática", "Pétreos"]
+                ]
+              }
+            },
+            {
+              "titulo": "Criterio de Von Mises",
+              "latex": "\\begin{aligned}\\sigma_{eq}&=\\sqrt{\\tfrac{1}{2}\\left[(\\sigma_1-\\sigma_2)^{2}+(\\sigma_2-\\sigma_3)^{2}+(\\sigma_3-\\sigma_1)^{2}\\right]}\\le\\sigma_e\\\\ \\sigma_{eq}&=\\sqrt{\\sigma_x^{2}-\\sigma_x\\sigma_y+\\sigma_y^{2}+3\\tau_{xy}^{2}}\\quad\\text{(estado plano)}\\\\ \\sigma_{eq}&=\\sqrt{\\sigma_x^{2}+3\\tau_{xy}^{2}}\\quad\\text{(si }\\sigma_y=0\\text{)}\\end{aligned}",
+              "nota": "Corrección sobre los apuntes: la forma $\\sqrt{\\sigma_x^{2}+3\\tau_{xy}^{2}}$ solo es válida si $\\sigma_y=\\sigma_z=0$ (por ejemplo, flexión con cortante en vigas). En un estado plano general se usa la segunda expresión.",
+              "claves": "tensión equivalente"
+            },
+            {
+              "titulo": "Recordar: leyes de Hooke generalizadas",
+              "latex": "\\begin{aligned}\\varepsilon_x&=\\dfrac{1}{E}\\left[\\sigma_x-\\nu\\,(\\sigma_y+\\sigma_z)\\right]\\\\ \\varepsilon_y&=\\dfrac{1}{E}\\left[\\sigma_y-\\nu\\,(\\sigma_x+\\sigma_z)\\right]\\\\ \\varepsilon_z&=\\dfrac{1}{E}\\left[\\sigma_z-\\nu\\,(\\sigma_x+\\sigma_y)\\right]\\end{aligned}"
+            },
+            {
+              "titulo": "Recordar: constantes elásticas",
+              "latex": "\\begin{aligned}\\nu&=-\\dfrac{\\varepsilon_{\\text{transversal}}}{\\varepsilon_{\\text{longitudinal}}}\\\\ E&=\\dfrac{\\sigma}{\\varepsilon}\\\\ G&=\\dfrac{\\tau}{\\gamma}\\\\ G&=\\dfrac{E}{2(1+\\nu)}\\end{aligned}"
+            },
+            {
+              "titulo": "Recordar: ecuaciones de Lamé (tensión plana)",
+              "latex": "\\begin{aligned}\\sigma_x&=\\dfrac{E}{1-\\nu^{2}}\\,(\\varepsilon_x+\\nu\\,\\varepsilon_y)\\\\ \\sigma_y&=\\dfrac{E}{1-\\nu^{2}}\\,(\\varepsilon_y+\\nu\\,\\varepsilon_x)\\end{aligned}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

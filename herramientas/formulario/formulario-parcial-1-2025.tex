@@ -1,0 +1,300 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[spanish,es-noshorthands]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage[a4paper,margin=1.7cm,top=2.1cm,bottom=2cm]{geometry}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[skins]{tcolorbox}
+
+\definecolor{ink}{HTML}{0F2A47}
+\definecolor{signal}{HTML}{F2C200}
+
+\tcbset{itembox/.style={colback=white,colframe=ink!30,boxrule=0.5pt,arc=1.2mm,
+  left=8pt,right=8pt,top=4pt,bottom=4pt,before skip=7pt,after skip=0pt}}
+
+\setlength{\parindent}{0pt}
+\setlength{\abovedisplayskip}{5pt}
+\setlength{\belowdisplayskip}{5pt}
+\setlength{\abovedisplayshortskip}{3pt}
+\setlength{\belowdisplayshortskip}{3pt}
+
+\newcommand{\tema}[2]{\vspace{1.1em}{\large\bfseries\color{ink}Tema #1\quad #2}\par\vspace{1pt}{\color{signal}\rule{\linewidth}{1.4pt}}\par\vspace{-2pt}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyhead[L]{\small Formulario de REM -- Parcial 1}
+\fancyhead[R]{\small ruizacademy.es}
+\fancyfoot[L]{\footnotesize Formulario orientativo elaborado por un alumno (Curso 2025)}
+\fancyfoot[R]{\small\thepage}
+
+\begin{document}
+
+\begin{tcolorbox}[colback=ink,colframe=ink,coltext=white,arc=1.5mm,boxrule=0pt,left=10pt,right=10pt,top=8pt,bottom=8pt]
+{\Large\bfseries Formulario de REM}\\[3pt]
+{\large Parcial 1 $\cdot$ Temas 1 a 5 $\cdot$ Curso 2025}
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced,colback=signal!14,colframe=signal!14,boxrule=0pt,arc=0mm,
+  borderline west={3pt}{0pt}{signal},left=9pt,right=8pt,top=5pt,bottom=5pt,before skip=8pt]
+\small Formulario orientativo elaborado por un alumno (Curso 2025). Puede contener variaciones respecto al temario actual si los profesores modifican criterios. Úsalo como guía de apoyo.
+\end{tcolorbox}
+
+\tema{1}{Hipótesis y principios generales}
+
+\begin{tcolorbox}[itembox]
+\textbf{Hipótesis simplificativas}\par
+{\small\begin{itemize}[leftmargin=*,nosep,label={--}]
+\item \textbf{Continuidad}: la distribución de la materia se asume continua.
+\item \textbf{Homogeneidad}: las propiedades físicas son constantes.
+\item \textbf{Isotropía}: las propiedades mecánicas no dependen de la dirección del espacio.
+\end{itemize}}
+\end{tcolorbox}
+
+\begin{tcolorbox}[itembox]
+\textbf{Principio de Saint-Venant}\par
+\smallskip\noindent Cuando dos sistemas equivalentes (misma resultante y mismo momento) se aplican sobre una misma zona, la diferencia entre ambos desaparece a medida que nos alejamos del punto de aplicación.\par
+\end{tcolorbox}
+
+\begin{tcolorbox}[itembox]
+\textbf{Principios de partida}\par
+{\small\begin{itemize}[leftmargin=*,nosep,label={--}]
+\item Principio de los pequeños desplazamientos.
+\item Principio de superposición de acciones.
+\end{itemize}}
+\end{tcolorbox}
+
+\tema{2}{Elasticidad lineal en barras}
+
+\begin{tcolorbox}[itembox]
+\textbf{Hipótesis de Bernoulli}\par
+\smallskip\noindent Las secciones transversales de una barra, inicialmente planas y perpendiculares a la directriz, continúan siéndolo después de la deformación axial.\par
+\end{tcolorbox}
+
+\begin{tcolorbox}[itembox]
+\textbf{Tensión normal}\par
+\[
+\sigma=\dfrac{F}{S}
+\]
+{\small\begin{itemize}[leftmargin=*,nosep,label={--}]
+\item $F$: fuerza axial.
+\item $S$: área de la sección.
+\end{itemize}}
+\end{tcolorbox}
+
+\begin{tcolorbox}[itembox]
+\textbf{Deformación unitaria}\par
+\[
+\varepsilon=\dfrac{\Delta L}{L_0}
+\]
+{\small\begin{itemize}[leftmargin=*,nosep,label={--}]
+\item $\Delta L$: alargamiento.
+\item $L_0$: longitud inicial.
+\end{itemize}}
+\end{tcolorbox}
+
+\begin{tcolorbox}[itembox]
+\textbf{Ley de Hooke}\par
+\[
+\begin{aligned}\sigma&=E\,\varepsilon\\ \tau&=G\,\gamma\end{aligned}
+\]
+{\small\begin{itemize}[leftmargin=*,nosep,label={--}]
+\item $E$: módulo de elasticidad.
+\item $G$: módulo de elasticidad transversal.
+\item $\gamma$: distorsión angular.
+\end{itemize}}
+\end{tcolorbox}
+
+\begin{tcolorbox}[itembox]
+\textbf{Tensión tangencial media}\par
+\[
+\tau_{\text{prom}}=\dfrac{V}{A}
+\]
+{\small\begin{itemize}[leftmargin=*,nosep,label={--}]
+\item $V$: esfuerzo cortante.
+\item $A$: área de la sección.
+\end{itemize}}
+\end{tcolorbox}
+
+\begin{tcolorbox}[itembox]
+\textbf{Coeficiente de Poisson}\par
+\[
+\nu=-\dfrac{\varepsilon_{\text{lateral}}}{\varepsilon_{\text{longitudinal}}}
+\]
+\end{tcolorbox}
+
+\begin{tcolorbox}[itembox]
+\textbf{Relación entre módulos elásticos}\par
+\[
+G=\dfrac{E}{2(1+\nu)}
+\]
+\end{tcolorbox}
+
+\tema{3}{Estado tensional y círculo de Mohr}
+
+\begin{tcolorbox}[itembox]
+\textbf{Vector tensión sobre un plano}\par
+\[
+\begin{aligned}\vec T_m&=(\sigma_m,\tau_m)\\ \sigma_m&=\vec f_p^{\,\pi}\cdot\vec m\\ \tau_m&=\pm\sqrt{\vec f_p^{\,\pi}\cdot\vec f_p^{\,\pi}-\sigma_m^{2}}\end{aligned}
+\]
+{\small\begin{itemize}[leftmargin=*,nosep,label={--}]
+\item $\vec f_p^{\,\pi}$: vector tensión en el punto $P$ sobre el plano $\pi$.
+\item $\vec m$: normal unitaria del plano.
+\item $\sigma_m,\ \tau_m$: componentes normal y tangencial.
+\end{itemize}}
+\end{tcolorbox}
+
+\begin{tcolorbox}[itembox]
+\textbf{Teorema de reciprocidad de Cauchy}\par
+\smallskip\noindent Las tensiones tangenciales en superficies que forman un ángulo diedro de $90^\circ$ son iguales en módulo y sus sentidos convergen o divergen de la arista común.\par
+\[
+\tau_{xy}=\tau_{yx}
+\]
+\end{tcolorbox}
+
+\begin{tcolorbox}[itembox]
+\textbf{Tensor de tensiones}\par
+\[
+[\sigma]_{xyz}=\begin{bmatrix}\sigma_x&\tau_{xy}&\tau_{xz}\\ \tau_{yx}&\sigma_y&\tau_{yz}\\ \tau_{zx}&\tau_{zy}&\sigma_z\end{bmatrix}
+\]
+\end{tcolorbox}
+
+\begin{tcolorbox}[itembox]
+\textbf{Fórmula de Cauchy}\par
+\[
+\begin{aligned}\begin{Bmatrix}t_x\\ t_y\end{Bmatrix}&=\begin{bmatrix}\sigma_x&\tau_{xy}\\ \tau_{xy}&\sigma_y\end{bmatrix}\begin{Bmatrix}\cos\alpha\\ \cos\beta\end{Bmatrix}\\ \vec f_p^{\,\pi}&=[\sigma]_{xy}\,\{m_\pi\}\end{aligned}
+\]
+{\small\begin{itemize}[leftmargin=*,nosep,label={--}]
+\item $\cos\alpha,\ \cos\beta$: cosenos directores de la normal del plano.
+\end{itemize}}
+\end{tcolorbox}
+
+\begin{tcolorbox}[itembox]
+\textbf{Invariantes del estado tensional}\par
+\[
+\begin{aligned}I_1&=\sigma_x+\sigma_y=\sigma_1+\sigma_2\\ I_2&=\begin{vmatrix}\sigma_x&\tau_{xy}\\ \tau_{yx}&\sigma_y\end{vmatrix}=\det[\sigma]_{xy}\end{aligned}
+\]
+\end{tcolorbox}
+
+\begin{tcolorbox}[itembox]
+\textbf{Tensiones principales}\par
+\[
+\begin{aligned}\sigma_1&=\dfrac{\sigma_x+\sigma_y}{2}+\sqrt{\left(\dfrac{\sigma_x-\sigma_y}{2}\right)^{2}+\tau_{xy}^{2}}\\ \sigma_2&=\dfrac{\sigma_x+\sigma_y}{2}-\sqrt{\left(\dfrac{\sigma_x-\sigma_y}{2}\right)^{2}+\tau_{xy}^{2}}\end{aligned}
+\]
+\end{tcolorbox}
+
+\begin{tcolorbox}[itembox]
+\textbf{Cambio de base del tensor de tensiones}\par
+\[
+[\sigma]_{xy}=[R]^{T}\,[\sigma]_{12}\,[R]
+\]
+\smallskip\noindent{\small\itshape $[R]$: matriz de giro cuyas filas son los ejes principales 1 y 2 expresados en $xy$.}\par
+\end{tcolorbox}
+
+\begin{tcolorbox}[itembox]
+\textbf{Círculo de Mohr}\par
+\[
+\begin{aligned}C&=\left(\dfrac{\sigma_x+\sigma_y}{2},\,0\right)\\ R&=\sqrt{\left(\dfrac{\sigma_x-\sigma_y}{2}\right)^{2}+\tau_{xy}^{2}}\\ \left|\tan 2\theta\right|&=\left|\dfrac{\tau_{xy}}{\dfrac{\sigma_x-\sigma_y}{2}}\right|\end{aligned}
+\]
+\smallskip\noindent{\small\itshape El radio es la tensión tangencial máxima en el plano: $\tau_{\max}=R$. El signo de $\tau_{xy}$ y de $\sigma_x-\sigma_y$ fija el cuadrante de $2\theta$.}\par
+\end{tcolorbox}
+
+\begin{tcolorbox}[itembox]
+\textbf{Ecuaciones de tensión plana}\par
+\[
+\begin{aligned}\sigma_m&=\dfrac{\sigma_x+\sigma_y}{2}+\dfrac{\sigma_x-\sigma_y}{2}\cos2\theta+\tau_{xy}\sin2\theta\\ \tau_m&=\dfrac{\sigma_x-\sigma_y}{2}\sin2\theta-\tau_{xy}\cos2\theta\end{aligned}
+\]
+\smallskip\noindent{\small\itshape $\theta$: ángulo antihorario desde el eje $x$ hasta la normal del plano. Con este convenio $\tau_m$ es positiva cuando tiende a girar el elemento en sentido horario (signo contrario al de la expresión habitual de $\tau_{x'y'}$).}\par
+\end{tcolorbox}
+
+\tema{4}{Deformaciones y extensometría}
+
+\begin{tcolorbox}[itembox]
+\textbf{Tensor de deformaciones}\par
+\[
+[\varepsilon]_{xyz}=\begin{bmatrix}\varepsilon_x&\tfrac12\gamma_{xy}&\tfrac12\gamma_{xz}\\ \tfrac12\gamma_{xy}&\varepsilon_y&\tfrac12\gamma_{yz}\\ \tfrac12\gamma_{xz}&\tfrac12\gamma_{yz}&\varepsilon_z\end{bmatrix}
+\]
+\end{tcolorbox}
+
+\begin{tcolorbox}[itembox]
+\textbf{Cambio de base del tensor de deformaciones}\par
+\[
+[\varepsilon]_{xyz}=[R]^{T}\,[\varepsilon]_{123}\,[R]
+\]
+\end{tcolorbox}
+
+\begin{tcolorbox}[itembox]
+\textbf{Deformación según una dirección}\par
+\[
+\begin{aligned}\vec\varepsilon_P^{\,m}&=[\varepsilon]\cdot\vec m\\ \varepsilon_m&=\vec\varepsilon\cdot\vec m\\ \tfrac12\gamma_m&=\sqrt{\vec\varepsilon\cdot\vec\varepsilon-\varepsilon_m^{2}}\end{aligned}
+\]
+\end{tcolorbox}
+
+\begin{tcolorbox}[itembox]
+\textbf{Ecuaciones de deformación plana}\par
+\[
+\begin{aligned}\varepsilon_m&=\dfrac{\varepsilon_x+\varepsilon_y}{2}+\dfrac{\varepsilon_x-\varepsilon_y}{2}\cos2\theta+\tfrac12\gamma_{xy}\sin2\theta\\ \tfrac12\gamma_m&=\dfrac{\varepsilon_x-\varepsilon_y}{2}\sin2\theta-\tfrac12\gamma_{xy}\cos2\theta\end{aligned}
+\]
+\end{tcolorbox}
+
+\begin{tcolorbox}[itembox]
+\textbf{Extensometría}\par
+\smallskip\noindent Técnica de medida de deformaciones longitudinales basada en el efecto piezorresistivo de un material conductor.\par
+\end{tcolorbox}
+
+\begin{tcolorbox}[itembox]
+\textbf{Efecto piezorresistivo}\par
+\smallskip\noindent Variación de la resistencia de un cable conductor cuando se deforma por acciones mecánicas.\par
+\[
+R=\rho\,\dfrac{L}{A}
+\]
+{\small\begin{itemize}[leftmargin=*,nosep,label={--}]
+\item $\rho$: resistividad del material.
+\item $L$: longitud del conductor.
+\item $A$: área de su sección.
+\end{itemize}}
+\end{tcolorbox}
+
+\begin{tcolorbox}[itembox]
+\textbf{Galga extensométrica}\par
+\smallskip\noindent Dispositivo que mide de forma indirecta la deformación longitudinal en el punto del sólido elástico donde se adhiere, en la dirección de su eje.\par
+\end{tcolorbox}
+
+\begin{tcolorbox}[itembox]
+\textbf{Roseta}\par
+\smallskip\noindent Dispositivo formado por varias galgas que permite obtener las deformaciones longitudinales en un punto para varias direcciones.\par
+\end{tcolorbox}
+
+\tema{5}{Ley de Hooke generalizada y ecuaciones de Lamé}
+
+\begin{tcolorbox}[itembox]
+\textbf{Material isótropo}\par
+\smallskip\noindent Misma dirección de tensión y deformación, e independencia entre tensiones normales y deformaciones transversales.\par
+\end{tcolorbox}
+
+\begin{tcolorbox}[itembox]
+\textbf{Leyes de Hooke generalizadas}\par
+\[
+\begin{aligned}\varepsilon_x&=\dfrac{1}{E}\left[\sigma_x-\nu\,(\sigma_y+\sigma_z)\right]\\ \varepsilon_y&=\dfrac{1}{E}\left[\sigma_y-\nu\,(\sigma_x+\sigma_z)\right]\\ \varepsilon_z&=\dfrac{1}{E}\left[\sigma_z-\nu\,(\sigma_x+\sigma_y)\right]\end{aligned}
+\]
+\end{tcolorbox}
+
+\begin{tcolorbox}[itembox]
+\textbf{Ecuaciones de Lamé}\par
+\[
+\begin{aligned}\sigma_x&=2G\,\varepsilon_x+\lambda\,e\\ \sigma_y&=2G\,\varepsilon_y+\lambda\,e\\ \sigma_z&=2G\,\varepsilon_z+\lambda\,e\\ \lambda&=\dfrac{\nu E}{(1-2\nu)(1+\nu)}\\ e&=\varepsilon_x+\varepsilon_y+\varepsilon_z\end{aligned}
+\]
+\end{tcolorbox}
+
+\begin{tcolorbox}[itembox]
+\textbf{Ecuaciones de Lamé en tensión plana}\par
+\[
+\begin{aligned}\sigma_x&=\dfrac{E}{1-\nu^{2}}\,(\varepsilon_x+\nu\,\varepsilon_y)\\ \sigma_y&=\dfrac{E}{1-\nu^{2}}\,(\varepsilon_y+\nu\,\varepsilon_x)\end{aligned}
+\]
+\end{tcolorbox}
+
+\end{document}

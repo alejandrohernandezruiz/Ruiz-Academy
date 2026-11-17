@@ -1,0 +1,261 @@
+/* RuizAcademy · tools.css
+   Gráficos SVG y layouts compartidos por las calculadoras (vigas, Mohr...). */
+
+/* Layout de página de herramienta: controles a la izquierda, gráfico a la derecha */
+.tool-header {
+  display: grid;
+  gap: var(--s2);
+  padding-block: var(--s6) var(--s5);
+}
+
+.tool-layout {
+  display: grid;
+  grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
+  gap: var(--s5);
+  align-items: start;
+  padding-bottom: var(--s6);
+}
+
+.tool-controls {
+  position: sticky;
+  top: calc(var(--header-h) + var(--s4));
+  display: grid;
+  gap: var(--s4);
+  padding: var(--s5);
+}
+
+.tool-stage {
+  display: grid;
+  gap: var(--s4);
+  min-width: 0;
+}
+
+.plot-card {
+  padding: var(--s4);
+}
+
+.plot-card__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s2);
+  margin-bottom: var(--s3);
+}
+
+/* Lista de cargas añadidas por el usuario */
+.load-list {
+  display: grid;
+  gap: var(--s2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.load-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s3);
+  padding: var(--s2) var(--s3);
+  background: var(--sheet-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+}
+
+/* Resultados numéricos */
+.results {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--s3);
+  margin: 0;
+}
+
+.stat {
+  padding: var(--s3) var(--s4);
+  background: var(--sheet-2);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--signal);
+  border-radius: var(--r-sm);
+}
+
+.stat dt {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+.stat dd {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.stat small {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+
+/* Leyenda y pestañas */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.875rem;
+}
+
+.legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s2);
+}
+
+.legend i {
+  width: 14px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--ink-soft);
+}
+
+.legend .is-shear i { background: var(--plot-shear); }
+.legend .is-moment i { background: var(--plot-moment); }
+
+.tabs {
+  display: inline-flex;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-md);
+  overflow: hidden;
+}
+
+.tabs button {
+  min-height: 40px;
+  padding: 0 var(--s4);
+  background: transparent;
+  border: 0;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.tabs button + button {
+  border-left: 1px solid var(--line-strong);
+}
+
+.tabs button[aria-selected="true"] {
+  background: var(--signal);
+  color: var(--signal-ink);
+}
+
+/* Tooltip flotante sobre los gráficos */
+.tool-tooltip {
+  position: absolute;
+  z-index: 10;
+  padding: var(--s1) var(--s3);
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: var(--r-sm);
+  font-size: 0.85rem;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* Gráficos SVG */
+.plot-svg {
+  width: 100%;
+  height: auto;
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.plot-svg text {
+  fill: var(--ink-soft);
+  font-family: var(--font-body);
+  font-size: 12px;
+}
+
+.plot-svg .plot-value {
+  fill: var(--ink);
+  font-weight: 600;
+}
+
+.plot-beam { stroke: var(--ink); stroke-width: 6; }
+.plot-support { fill: none; stroke: var(--ink); stroke-width: 2; }
+.plot-load { stroke: var(--ink); stroke-width: 2; fill: none; }
+.plot-axis { stroke: var(--line-strong); stroke-width: 1; }
+.plot-grid { stroke: var(--line); stroke-width: 1; stroke-dasharray: 3 4; }
+.plot-cursor { stroke: var(--signal); stroke-width: 2; }
+
+.plot-shear-line,
+.plot-moment-line {
+  fill: none;
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+}
+
+.plot-shear-line { stroke: var(--plot-shear); }
+.plot-moment-line { stroke: var(--plot-moment); }
+.plot-shear-fill { fill: var(--plot-shear); fill-opacity: 0.16; }
+.plot-moment-fill { fill: var(--plot-moment); fill-opacity: 0.16; }
+
+/* Círculo de Mohr */
+.plot-circle { fill: none; stroke: var(--plot-shear); stroke-width: 2.5; }
+.plot-diameter { stroke: var(--plot-moment); stroke-width: 2; stroke-dasharray: 6 4; }
+.plot-point { fill: var(--signal); stroke: var(--ink); stroke-width: 1.5; }
+
+/* Demo de la portada: el trazo se dibuja una sola vez al cargar */
+.demo {
+  display: grid;
+  gap: var(--s4);
+  padding: var(--s4);
+}
+
+.demo__title {
+  font-weight: 600;
+}
+
+.demo .draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: draw 1.2s var(--ease) 0.25s forwards;
+}
+
+.demo .fade {
+  opacity: 0;
+  animation: fade-in 0.6s ease 1s forwards;
+}
+
+@keyframes draw {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes fade-in {
+  to { opacity: 1; }
+}
+
+@media (max-width: 900px) {
+  .tool-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .tool-controls {
+    position: static;
+  }
+}
+
+@media print {
+  body::before,
+  .site-header,
+  .tool-controls,
+  .theme-toggle {
+    display: none;
+  }
+
+  .tool-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
