@@ -3,10 +3,86 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Diagramas de cortante y flector de una viga biapoyada | RuizAcademy</title>
-  <meta name="description" content="Calcula reacciones y dibuja los diagramas de cortante y flector de una viga biapoyada con carga puntual y carga uniforme. Convenio de signos de REM.">
+  <title>Diagramas de Cortante y Flector Online | RuizAcademy</title>
+  <meta name="description" content="Calcula reacciones y dibuja los diagramas de cortante y flector de una viga biapoyada con carga puntual y uniforme. Gratis, online y sin registro.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#edf1f5">
+  <link rel="canonical" href="https://ruizacademy.es/herramientas/vigas/">
+
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="RuizAcademy">
+  <meta property="og:title" content="Diagramas de cortante y flector online: viga biapoyada">
+  <meta property="og:description" content="Introduce la luz y las cargas y obtén al instante las reacciones y los diagramas de cortante y flector con sus valores máximos.">
+  <meta property="og:url" content="https://ruizacademy.es/herramientas/vigas/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:image" content="https://ruizacademy.es/assets/img/og-vigas.png">
+  <meta property="og:image:alt" content="Diagramas de cortante y flector de una viga biapoyada calculados con RuizAcademy">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Diagramas de cortante y flector online: viga biapoyada">
+  <meta name="twitter:description" content="Reacciones y diagramas de cortante y flector al instante. Gratis y sin registro.">
+  <meta name="twitter:image" content="https://ruizacademy.es/assets/img/og-vigas.png">
+  <meta name="twitter:image:alt" content="Diagramas de cortante y flector de una viga biapoyada calculados con RuizAcademy">
+
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%230f2a47'/%3E%3Cpath d='M4 12h24' stroke='%23f2c200' stroke-width='4'/%3E%3Cpath d='M16 14l-7 11h14z' fill='none' stroke='%23fff' stroke-width='2'/%3E%3C/svg%3E">
+
+  <!-- Datos estructurados -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://ruizacademy.es/herramientas/vigas/#app",
+        "name": "Diagramas de cortante y flector online",
+        "url": "https://ruizacademy.es/herramientas/vigas/",
+        "description": "Calculadora gratuita de reacciones y diagramas de esfuerzo cortante y momento flector de una viga biapoyada con carga puntual y carga uniforme.",
+        "applicationCategory": "EducationalApplication",
+        "applicationSubCategory": "Calculadora de Estructuras",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requiere JavaScript",
+        "inLanguage": "es-ES",
+        "isAccessibleForFree": true,
+        "image": "https://ruizacademy.es/assets/img/og-vigas.png",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "EUR"
+        },
+        "audience": {
+          "@type": "EducationalAudience",
+          "educationalRole": "student"
+        },
+        "featureList": [
+          "Reacciones en los apoyos A y B",
+          "Diagrama de esfuerzo cortante V",
+          "Diagrama de momento flector M",
+          "Valores máximos y mínimos con su posición",
+          "Exploración interactiva de cualquier sección"
+        ],
+        "publisher": {
+          "@type": "Organization",
+          "@id": "https://ruizacademy.es/#organization",
+          "name": "RuizAcademy",
+          "url": "https://ruizacademy.es/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://ruizacademy.es/assets/img/logo.png"
+          }
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://ruizacademy.es/" },
+          { "@type": "ListItem", "position": 2, "name": "Diagramas de cortante y flector", "item": "https://ruizacademy.es/herramientas/vigas/" }
+        ]
+      }
+    ]
+  }
+  </script>
 
   <script>
     (function () {
@@ -26,7 +102,9 @@
     .presets { display: flex; flex-wrap: wrap; gap: var(--s2); }
     .presets .btn { min-height: 40px; padding: 0 var(--s3); font-size: 0.9rem; }
     .stat__where { display: block; font-weight: 400; }
-    .readout { margin: var(--s3) 0 var(--s2); font-weight: 600; min-height: 1.6em; }
+    .readout { display: flex; flex-wrap: wrap; gap: var(--s1) var(--s5); margin: var(--s3) 0 var(--s2); font-weight: 600; min-height: 1.6em; }
+    .readout__item { white-space: nowrap; }
+    .readout__item small { font-size: 0.85em; font-weight: 500; color: var(--ink-soft); }
     .stage-note { display: none; }
     [data-state="error"] .stage-note { display: block; }
     [data-state="error"] .plot-card { opacity: 0.4; }
@@ -60,13 +138,13 @@
     <div class="tool-header">
       <p class="muted"><a href="../../#herramientas">Herramientas</a> / Estructuras</p>
       <h1>Diagramas de cortante y flector</h1>
-      <p class="muted">Viga biapoyada con una carga puntual y una carga uniforme.</p>
+      <p class="muted">Viga biapoyada con una carga puntual y una carga uniforme en toda la luz. Si una carga vale 0, se ignora.</p>
     </div>
 
     <div class="tool-layout">
       <form class="sheet tool-controls" id="datos" novalidate aria-label="Datos de la viga">
         <div class="field">
-          <label class="label" for="L">Longitud (L)</label>
+          <label class="label" for="L">Luz L</label>
           <div class="input-group">
             <input class="input" id="L" inputmode="decimal" autocomplete="off" value="6" aria-describedby="err-L">
             <span class="input-group__unit">m</span>
@@ -75,7 +153,7 @@
         </div>
 
         <div class="field">
-          <label class="label" for="P">Carga puntual (P)</label>
+          <label class="label" for="P">Carga puntual P</label>
           <div class="input-group">
             <input class="input" id="P" inputmode="decimal" autocomplete="off" value="10" aria-describedby="hint-P err-P">
             <span class="input-group__unit">kN</span>
@@ -85,7 +163,7 @@
         </div>
 
         <div class="field">
-          <label class="label" for="a">Posición de P (a)</label>
+          <label class="label" for="a">Posición de P, a</label>
           <div class="input-group">
             <input class="input" id="a" inputmode="decimal" autocomplete="off" value="2" aria-describedby="hint-a err-a">
             <span class="input-group__unit">m</span>
@@ -100,7 +178,7 @@
             <input class="input" id="q" inputmode="decimal" autocomplete="off" value="5" aria-describedby="hint-q err-q">
             <span class="input-group__unit">kN/m</span>
           </div>
-          <span class="hint" id="hint-q">Positiva hacia abajo, en toda la viga.</span>
+          <span class="hint" id="hint-q">Positiva hacia abajo, en toda la luz.</span>
           <span class="field-error" id="err-q" role="alert"></span>
         </div>
 
@@ -126,7 +204,7 @@
             </ul>
           </div>
 
-          <svg class="plot-svg" id="diagrama" viewBox="0 0 760 580" role="img" aria-label="Viga biapoyada con sus cargas y los diagramas de cortante y flector"></svg>
+          <svg class="plot-svg" id="diagrama" viewBox="0 0 760 600" role="img" aria-label="Viga biapoyada con sus cargas y los diagramas de cortante y flector"></svg>
 
           <p class="readout" id="lectura"></p>
           <div class="field">
@@ -147,6 +225,46 @@
         <p class="hint">Convenio: V es positivo si hace girar el elemento en sentido horario (hacia arriba a la izquierda de la sección). M es positivo si tracciona las fibras inferiores y se dibuja hacia abajo. Las reacciones son positivas hacia arriba.</p>
       </div>
     </div>
+
+    <section class="section" id="explicacion" aria-labelledby="titulo-explicacion">
+      <div class="section__head">
+        <h2 id="titulo-explicacion">Cómo se calculan los diagramas de una viga biapoyada</h2>
+        <p class="muted">Las ecuaciones que aplica la herramienta, con L la luz, P la carga puntual situada a una distancia a del apoyo A, y q la carga uniforme.</p>
+      </div>
+
+      <h3>Reacciones en los apoyos</h3>
+      <p>Se obtienen del equilibrio de momentos respecto a cada apoyo: R<sub>A</sub> = P·(L − a)/L + q·L/2 y R<sub>B</sub> = P·a/L + q·L/2. Con los valores por defecto (L = 6 m, P = 10 kN en a = 2 m y q = 5 kN/m) resulta R<sub>A</sub> ≈ 21,67 kN y R<sub>B</sub> ≈ 18,33 kN, que suman las cargas totales (10 + 5·6 = 40 kN).</p>
+
+      <h3>Esfuerzo cortante V(x)</h3>
+      <p>A la izquierda de la carga puntual (0 ≤ x &lt; a), V(x) = R<sub>A</sub> − q·x. Tras ella (a &lt; x ≤ L), V(x) = R<sub>A</sub> − P − q·x. El diagrama da un salto igual a P justo bajo la carga puntual y decrece linealmente con pendiente −q donde hay carga uniforme.</p>
+
+      <h3>Momento flector M(x)</h3>
+      <p>Para 0 ≤ x ≤ a, M(x) = R<sub>A</sub>·x − q·x²/2. Para a ≤ x ≤ L, M(x) = R<sub>A</sub>·x − P·(x − a) − q·x²/2. Como dM/dx = V, el flector máximo aparece donde el cortante vale cero o cambia de signo. En una viga con solo carga uniforme, M<sub>máx</sub> = q·L²/8 en el centro; con solo una carga puntual centrada, M<sub>máx</sub> = P·L/4.</p>
+
+      <h3>Convenio de signos</h3>
+      <p>La herramienta usa el convenio indicado bajo los resultados: V positivo si hace girar el elemento en sentido horario, M positivo si tracciona las fibras inferiores y se dibuja hacia abajo. Cada asignatura puede adoptar otro convenio (por ejemplo, el de REM de tu profesor de la UPV u otra universidad): cambiarlo invierte el signo del diagrama, pero no su forma ni los valores absolutos.</p>
+    </section>
+
+    <section class="section" id="preguntas" aria-labelledby="titulo-preguntas">
+      <div class="section__head">
+        <h2 id="titulo-preguntas">Preguntas frecuentes</h2>
+      </div>
+
+      <h3>¿Cómo se dibuja el diagrama de cortante?</h3>
+      <p>Se parte del valor de la reacción en A, se resta la carga puntual como un salto en su posición y se resta q·x en los tramos con carga uniforme. Debe terminar en el valor de −R<sub>B</sub> en el apoyo derecho; si no cierra, hay un error en las reacciones.</p>
+
+      <h3>¿Dónde está el momento flector máximo?</h3>
+      <p>En la sección donde el cortante es cero o cambia de signo. La herramienta marca el valor máximo y su posición, y puedes explorar cualquier sección con el control deslizante para comprobarlo.</p>
+
+      <h3>¿Qué pasa si P o q valen 0?</h3>
+      <p>Esa carga se ignora. Así puedes calcular una viga con solo carga puntual, solo carga uniforme o ambas a la vez, y usar los ejemplos para ver cada caso.</p>
+
+      <h3>¿Sirve para otros tipos de viga?</h3>
+      <p>Por ahora calcula una viga biapoyada con una carga puntual y una carga uniforme en toda la luz. Para voladizos, vigas continuas o cargas distribuidas parciales conviene resolver el ejercicio a mano y usar esta herramienta como comprobación de casos sencillos.</p>
+
+      <h3>¿Se guardan los datos que introduzco?</h3>
+      <p>No. El cálculo se hace en tu navegador y los valores no salen de tu dispositivo. Contrasta siempre los resultados con tus apuntes y con tu profesorado.</p>
+    </section>
   </main>
 
   <footer class="site-footer">

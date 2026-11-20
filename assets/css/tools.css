@@ -183,6 +183,19 @@
   font-weight: 600;
 }
 
+/* Halo del color del fondo: los números no se mezclan con las líneas que cruzan por detrás */
+.plot-svg text {
+  paint-order: stroke;
+  stroke: var(--sheet);
+  stroke-width: 3px;
+  stroke-linejoin: round;
+}
+
+/* Círculo de Mohr en disposición vertical (móvil): el dibujo se escala a menos de la mitad, el texto sube */
+.plot-svg.is-tall text {
+  font-size: 15px;
+}
+
 .plot-beam { stroke: var(--ink); stroke-width: 6; }
 .plot-support { fill: none; stroke: var(--ink); stroke-width: 2; }
 .plot-load { stroke: var(--ink); stroke-width: 2; fill: none; }

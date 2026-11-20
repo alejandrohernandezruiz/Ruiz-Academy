@@ -15,9 +15,12 @@ const readout = $("#lectura");
 const minStat = $("#stat-mmin");
 const out = Object.fromEntries([...document.querySelectorAll("[data-out]")].map((el) => [el.dataset.out, el]));
 
+/* Cada valor va en su propio bloque para poder separarlos con CSS */
+const item = (name, value, unit) => `<span class="readout__item">${name} = ${value} <small>${unit}</small></span>`;
+
 const view = createBeamView($("#diagrama"), (cursor) => {
-  readout.textContent = cursor
-    ? `x = ${f(cursor.x)} m:  V = ${f(cursor.v)} kN,  M = ${f(cursor.m)} kN·m`
+  readout.innerHTML = cursor
+    ? item("x", f(cursor.x), "m") + item("V", f(cursor.v), "kN") + item("M", f(cursor.m), "kN·m")
     : "";
   if (cursor) slider.value = String(cursor.x);
 });

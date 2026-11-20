@@ -3,10 +3,87 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Círculo de Mohr 2D: tensiones principales y cortante máximo | RuizAcademy</title>
-  <meta name="description" content="Calcula tensiones principales, cortante máximo, planos principales y tensión de von Mises de un estado plano de tensiones, con el círculo de Mohr interactivo.">
+  <title>Calculadora Círculo de Mohr 2D Online | RuizAcademy</title>
+  <meta name="description" content="Calculadora online del círculo de Mohr 2D: tensiones principales, cortante máximo, planos principales y von Mises. Gratis, sin registro y con gráfico.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#edf1f5">
+  <link rel="canonical" href="https://ruizacademy.es/herramientas/mohr/">
+
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="RuizAcademy">
+  <meta property="og:title" content="Calculadora del círculo de Mohr 2D online">
+  <meta property="og:description" content="Introduce σx, σy y τxy y obtén tensiones principales, cortante máximo, planos principales, von Mises y Tresca con el círculo interactivo.">
+  <meta property="og:url" content="https://ruizacademy.es/herramientas/mohr/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:image" content="https://ruizacademy.es/assets/img/og-mohr.png">
+  <meta property="og:image:alt" content="Círculo de Mohr 2D con tensiones principales y cortante máximo calculado con RuizAcademy">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Calculadora del círculo de Mohr 2D online">
+  <meta name="twitter:description" content="Tensiones principales, cortante máximo y von Mises de un estado plano. Gratis y sin registro.">
+  <meta name="twitter:image" content="https://ruizacademy.es/assets/img/og-mohr.png">
+  <meta name="twitter:image:alt" content="Círculo de Mohr 2D con tensiones principales y cortante máximo calculado con RuizAcademy">
+
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%230f2a47'/%3E%3Cpath d='M4 12h24' stroke='%23f2c200' stroke-width='4'/%3E%3Cpath d='M16 14l-7 11h14z' fill='none' stroke='%23fff' stroke-width='2'/%3E%3C/svg%3E">
+
+  <!-- Datos estructurados -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://ruizacademy.es/herramientas/mohr/#app",
+        "name": "Calculadora del círculo de Mohr 2D online",
+        "url": "https://ruizacademy.es/herramientas/mohr/",
+        "description": "Calculadora gratuita del círculo de Mohr para un estado plano de tensiones: tensiones principales, cortante máximo, planos principales, tensión de von Mises y de Tresca.",
+        "applicationCategory": "EducationalApplication",
+        "applicationSubCategory": "Calculadora de Resistencia de Materiales",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requiere JavaScript",
+        "inLanguage": "es-ES",
+        "isAccessibleForFree": true,
+        "image": "https://ruizacademy.es/assets/img/og-mohr.png",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "EUR"
+        },
+        "audience": {
+          "@type": "EducationalAudience",
+          "educationalRole": "student"
+        },
+        "featureList": [
+          "Tensiones principales σ1 y σ2",
+          "Cortante máximo en el plano y absoluto",
+          "Orientación de los planos principales",
+          "Tensión equivalente de von Mises y Tresca",
+          "Elemento de tensiones girado un ángulo θ",
+          "Convenio de signos de τ seleccionable"
+        ],
+        "publisher": {
+          "@type": "Organization",
+          "@id": "https://ruizacademy.es/#organization",
+          "name": "RuizAcademy",
+          "url": "https://ruizacademy.es/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://ruizacademy.es/assets/img/logo.png"
+          }
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://ruizacademy.es/" },
+          { "@type": "ListItem", "position": 2, "name": "Círculo de Mohr 2D", "item": "https://ruizacademy.es/herramientas/mohr/" }
+        ]
+      }
+    ]
+  }
+  </script>
 
   <script>
     (function () {
@@ -26,9 +103,12 @@
     .presets { display: flex; flex-wrap: wrap; gap: var(--s2); }
     .presets .btn { min-height: 40px; padding: 0 var(--s3); font-size: 0.9rem; }
     .stat__where { display: block; font-weight: 400; }
-    .readout { margin: var(--s3) 0 var(--s2); font-weight: 600; min-height: 1.6em; }
+    .readout { display: flex; flex-wrap: wrap; gap: var(--s1) var(--s5); margin: var(--s3) 0 var(--s2); font-weight: 600; min-height: 1.6em; }
+    .readout__item { white-space: nowrap; }
+    .readout__item small { font-size: 0.85em; font-weight: 500; color: var(--ink-soft); }
     .element-box { display: grid; justify-items: center; gap: var(--s2); }
     .element-box svg { width: 100%; max-width: 240px; height: auto; }
+    @media (max-width: 600px) { .plot-card { padding: var(--s3) var(--s2); } }
     .stage-note { display: none; }
     [data-state="error"] .stage-note { display: block; }
     [data-state="error"] .plot-card { opacity: 0.4; }
@@ -152,6 +232,49 @@
         <p class="hint">Los ángulos θ son positivos en sentido antihorario y se miden desde el eje x hasta la normal de la cara. El cortante máximo absoluto incluye la tensión principal nula del estado plano (σ3 = 0). Von Mises y Tresca suponen estado plano de tensiones.</p>
       </div>
     </div>
+
+    <section class="section" id="explicacion" aria-labelledby="titulo-explicacion">
+      <div class="section__head">
+        <h2 id="titulo-explicacion">Cómo se calcula el círculo de Mohr en estado plano</h2>
+        <p class="muted">Las ecuaciones que usa la herramienta a partir de σx, σy y τxy.</p>
+      </div>
+
+      <h3>Centro y radio del círculo</h3>
+      <p>El círculo tiene su centro en C = (σx + σy)/2 sobre el eje de tensiones normales y un radio R = √[((σx − σy)/2)² + τxy²]. Cada punto del círculo representa la tensión normal y cortante en un plano distinto que pasa por el punto; girar el elemento un ángulo θ equivale a girar 2θ sobre el círculo.</p>
+
+      <h3>Tensiones principales y planos principales</h3>
+      <p>Las tensiones principales son σ1 = C + R y σ2 = C − R, y en esos planos la tensión cortante es nula. La orientación del plano de σ1 sale de tan 2θp = 2τxy / (σx − σy). Con σx = 50, σy = −10 y τxy = 40 MPa, C = 20 MPa y R = 50 MPa, de modo que σ1 = 70 MPa y σ2 = −30 MPa.</p>
+
+      <h3>Cortante máximo en el plano y absoluto</h3>
+      <p>El cortante máximo en el plano es τmáx = R y actúa en planos girados 45° respecto a los principales, con una tensión normal igual a C. El cortante máximo absoluto tiene en cuenta la tercera tensión principal del estado plano, σ3 = 0, y vale la mitad de la mayor diferencia entre σ1, σ2 y σ3. Es la cifra relevante cuando σ1 y σ2 tienen el mismo signo.</p>
+
+      <h3>Tensión de von Mises y de Tresca</h3>
+      <p>La tensión equivalente de von Mises en estado plano es σvm = √(σ1² − σ1·σ2 + σ2²) = √(σx² − σx·σy + σy² + 3·τxy²). Para el ejemplo anterior da σvm ≈ 88,9 MPa. El criterio de Tresca compara la mayor diferencia entre tensiones principales (incluida σ3 = 0) con el límite elástico, que equivale a 2·τmáx absoluto. En ambos casos hay fallo cuando la tensión equivalente alcanza el límite elástico dividido por el coeficiente de seguridad.</p>
+
+      <h3>Convenio de signos de τ</h3>
+      <p>Las tensiones normales son positivas en tracción y negativas en compresión. Para τ existen dos convenios habituales (horario y antihorario), y el selector de la herramienta cambia el signo de τ y el sentido del eje τ del círculo. Usa el que indique tu asignatura de REM; los valores de σ1, σ2, τmáx y von Mises no dependen de él.</p>
+    </section>
+
+    <section class="section" id="preguntas" aria-labelledby="titulo-preguntas">
+      <div class="section__head">
+        <h2 id="titulo-preguntas">Preguntas frecuentes</h2>
+      </div>
+
+      <h3>¿Qué es el círculo de Mohr?</h3>
+      <p>Es una representación gráfica de cómo cambian la tensión normal y la tensión cortante en un punto según la orientación del plano que se considere. Permite hallar tensiones principales, planos principales y cortante máximo sin recorrer todas las orientaciones.</p>
+
+      <h3>¿Qué datos necesito para usar la calculadora?</h3>
+      <p>Solo las tres componentes del estado plano de tensiones en MPa: σx, σy y τxy. Pulsa uno de los ejemplos (general, tracción o cortante puro) si quieres ver primero cómo responde.</p>
+
+      <h3>¿Cuál es la diferencia entre cortante máximo en el plano y absoluto?</h3>
+      <p>El cortante máximo en el plano es el radio del círculo y solo considera σ1 y σ2. El absoluto incluye σ3 = 0 y puede ser mayor, por ejemplo cuando σ1 y σ2 son ambas de tracción.</p>
+
+      <h3>¿Cuándo se usa von Mises y cuándo Tresca?</h3>
+      <p>Ambos son criterios de fallo para materiales dúctiles. Von Mises se ajusta mejor a los ensayos, mientras que Tresca es algo más conservador. Qué criterio aplicar en un ejercicio o examen depende de lo que indique el enunciado o tu asignatura.</p>
+
+      <h3>¿Se guardan los datos que introduzco?</h3>
+      <p>No. El cálculo se hace en tu navegador y los valores no salen de tu dispositivo. Contrasta siempre los resultados con tus apuntes y con tu profesorado.</p>
+    </section>
   </main>
 
   <footer class="site-footer">

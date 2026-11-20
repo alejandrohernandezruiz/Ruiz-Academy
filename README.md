@@ -1,101 +1,61 @@
 <div align="center">
 
-# 📐 Ruiz Academy — Engineering & Mechanics Tools
+# Ruiz Academy
 
-**Interactive web tools for Strength of Materials (REM) and Structural Analysis.**  
-Built by an engineering student, for engineering students.
+**Interactive engineering tools for Strength of Materials and structural analysis.**
 
-[🌐 Live Website (ruizacademy.es)](https://ruizacademy.es) · [🇪🇸 Leer en Español](README.es.md)
+A student-built project to make selected engineering concepts easier to explore and understand.
+
+[🌐 Website](https://ruizacademy.es) · [🇪🇸 Versión en español](README.es.md)
 
 </div>
 
 ---
 
-## 💡 About the Project & My Story (Full Transparency)
+## About
 
-Hi! I'm a **20-year-old 3nd-year Industrial Engineering student** at the **Universitat Politècnica de València (UPV)** in Spain. 
+Ruiz Academy is an independent project created to support engineering students, especially those studying **Strength of Materials (REM)** and **Structures**.
 
-I am self-taught in **Python**, and my long-term goal as an industrial engineer is to connect Python with real-world engineering problems, data analysis, and process optimization. However, I happened to own a personal domain (`ruizacademy.es`) from a previous project and I didn't want to let it go to waste.
+I'm Alejandro Hernández Ruiz, a **third-year Industrial Engineering student at the Universitat Politècnica de València (UPV)**. My long-term interests are Python, data analysis and the application of technology to engineering problems.
 
-Out of pure curiosity and a desire to build a real, useful product for my university community—specifically for tough core subjects like **Strength of Materials (REM)** and **Structures**—I decided to self-teach myself the core fundamentals of **HTML, CSS, and JavaScript** from scratch.
+I started this project to build something useful for my university community. To do so, I learned the fundamentals of HTML, CSS and JavaScript and used AI tools to assist with implementation. I defined the project requirements and expected behaviour, guided the structure of the application, and reviewed the calculations and outputs. AI was part of the development process; this is not a claim that I independently authored every line of code or that I am a professional web developer.
 
-### 🎼 Acting as the "Orchestra Conductor" with AI
-Because I am an engineering student with limited time—not a full-time web developer—learning three frontend languages to 100% mastery would have delayed launching this project for months. Instead of letting that stop me, **I leveraged Artificial Intelligence as a development accelerator**. 
+Ruiz Academy is therefore an extension of my interest in applying technology to engineering problems—not a change in my long-term focus.
 
-I acted as the **product architect and orchestra conductor**: defining the engineering requirements, enforcing UPV academic sign conventions, structuring the modular codebase, and validating every mathematical output against real past university exams. I believe in total transparency regarding my workflow, my current technical limits, and my genuine intention to help fellow industrial, civil, and mechanical engineering students visualize complex concepts.
+## Tools
 
----
+- **Beam diagrams** — calculate support reactions and display shear-force \(V(x)\) and bending-moment \(M(x)\) diagrams for the beam cases supported by the tool.
+- **Mohr's circle** — explore plane-stress transformations by changing the rotation angle and observing the resulting stresses, principal stresses and maximum shear.
+- **REM formula reference** — search formulas organised by topic and access the corresponding PDF reference sheets.
 
-## 🛠️ Included Tools
+## Technical overview
 
-1. **Interactive 2D Beam Diagrams (`herramientas/vigas/`):**
-   * Real-time calculation of support reactions, shear force diagrams V(x), and bending moment diagrams M(x) using UPV sign conventions (tensioned bottom fibers drawn downwards).
-2. **2D Mohr's Circle Visualizer (`herramientas/mohr/`):**
-   * Dynamic stress transformation calculator (\(\sigma_x, \sigma_y, \tau_{xy}\)) with an interactive rotation angle slider (θ) rendering principal stresses and maximum shear in real time.
-3. **UPV Smart Formula Sheet (`herramientas/formulario/`):**
-   * Searchable database of Strength of Materials formulas divided into Midterm 1 (Units 1–6) and Midterm 2 (Units 7–10), rendered with KaTeX and accompanied by clean LaTeX-compiled PDF downloads.
+The project uses a modular frontend structure:
 
----
+- `solver.js` contains calculation logic.
+- `render.js` handles Canvas-based visualisation.
+- `main.js` connects the calculations, visual output and user interface.
 
-## 📂 Project Architecture
+The formula reference is stored as structured data in JSON. The PDF reference sheets are prepared from LaTeX source files.
 
-The project follows a clean, zero-dependency Frontend architecture that decouples pure physics/math (`solver.js`) from canvas rendering (`render.js`) and DOM manipulation (`main.js`):
+### Automated tests
 
-```text
-Ruiz-Academy/
-├── assets/
-│   ├── css/
-│   │   ├── base.css                  # Global variables, reset, typography & dark/light theme
-│   │   ├── components.css            # Reusable UI cards, buttons, inputs & tables
-│   │   └── tools.css                 # Specific layout for engineering calculators
-│   ├── img/                          # Static visual assets & icons
-│   └── js/
-│       └── common.js                 # Shared utilities & theme switcher
-├── herramientas/
-│   ├── formulario/
-│   │   ├── pdf/
-│   │   │   ├── formulario-parcial-1-2025.pdf
-│   │   │   └── formulario-parcial-2-2025.pdf
-│   │   ├── build-latex.mjs           # Automated script for LaTeX generation
-│   │   ├── formulario-parcial-1-2025.tex
-│   │   ├── formulario-parcial-2-2025.tex
-│   │   ├── formulas.json             # Decoupled structured formula database
-│   │   ├── index.html
-│   │   └── main.js
-│   ├── mohr/
-│   │   ├── index.html
-│   │   ├── main.js                   # Connects UI events, solver & canvas
-│   │   ├── render.js                 # HTML5 Canvas rendering for Mohr's Circle
-│   │   └── solver.js                 # Pure physics & stress transformation math
-│   └── vigas/
-│       ├── index.html
-│       ├── main.js                   # Connects UI events, solver & canvas
-│       ├── render.js                 # HTML5 Canvas rendering for V(x) and M(x)
-│       └── solver.js                 # Pure analytical beam mechanics
-├── tests/
-│   ├── formulario.test.js            # Automated tests for formula data integrity
-│   ├── mohr.test.js                  # Automated tests for stress states
-│   └── vigas.test.js                 # Unit tests validated against real UPV exams
-├── index.html                        # Main landing page & tool selector
-├── LICENSE                           # Proprietary / All Rights Reserved notice
-├── package.json                      # Node.js & Jest testing configuration
-└── README.md                         # Project documentation
-```
+The project uses **Node.js's built-in test runner** (`node:test`) and assertions from `node:assert/strict`. It does **not** use Jest.
 
----
+The test suite covers selected Mohr's circle calculations, beam calculations and equilibrium properties, as well as the integrity of the formula data and related page content. These tests provide checks for the cases they cover; they do not guarantee that every possible input or engineering situation is error-free.
 
-## 🧪 Mathematical Validation (TDD)
-
-To guarantee academic accuracy, the mathematical engines (`solver.js`) are verified locally using **Jest** against analytical problems and past exams solved by UPV professors:
+To run the tests, use **Node.js 20 or later**:
 
 ```bash
-npm install
 npm test
 ```
 
----
+No additional test framework is required.
 
-## ⚖️ Disclaimer & License
+## Academic note
 
-* **Academic Disclaimer:** This is an independent student-led project created to support engineering students. It is not officially affiliated with, endorsed, or sponsored by the *Universitat Politècnica de València (UPV)*.
-* **License:** See the [LICENSE](LICENSE) file for usage and redistribution terms.
+Ruiz Academy is an independent educational project. It is **not affiliated with, endorsed by or sponsored by the Universitat Politècnica de València (UPV)**. Use it as a study aid and check important results against your course material and the relevant academic references.
+
+## License
+
+See the [`LICENSE`](LICENSE) file for the applicable terms.

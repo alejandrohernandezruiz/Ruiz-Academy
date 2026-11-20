@@ -234,3 +234,50 @@ kbd {
     transition-duration: 0.001ms !important;
   }
 }
+
+/* Espaciado e indentación limpia para las Preguntas Frecuentes */
+#preguntas h3 {
+  margin-top: 1.75rem;     /* Espacio amplio antes de cada nueva pregunta */
+  margin-bottom: 0.45rem;  /* Pequeña separación entre la pregunta y su respuesta */
+}
+
+#preguntas h3:first-of-type {
+  margin-top: 0.5rem;      /* Evita que la primera pregunta quede muy lejos del título */
+}
+
+#preguntas p {
+  margin-left: 1.25rem;    /* Tabulador / sangría hacia la derecha para cada respuesta */
+}
+
+/* Espaciado e indentación limpia para las secciones explicativas y Preguntas Frecuentes */
+#preguntas h3,
+#explicacion h3 {
+  margin-top: 1.75rem;     /* Espacio amplio antes de cada nuevo apartado */
+  margin-bottom: 0.45rem;  /* Pequeña separación entre el subtítulo y su párrafo */
+}
+
+#preguntas h3:first-of-type,
+#explicacion h3:first-of-type {
+  margin-top: 0.5rem;      /* Evita que el primer apartado quede muy lejos del título principal */
+}
+
+#preguntas p,
+#explicacion > p {
+  margin-left: 1.25rem;    /* Tabulador / sangría hacia la derecha (el > evita mover el subtítulo gris de arriba) */
+}
+
+/* Evita el desbordamiento horizontal en móviles y ajusta la cabecera */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+@media (max-width: 600px) {
+  .site-header__inner {
+    gap: 0.5rem;
+  }
+  .nav {
+    gap: 0.65rem;
+    font-size: 0.88rem;
+  }
+}

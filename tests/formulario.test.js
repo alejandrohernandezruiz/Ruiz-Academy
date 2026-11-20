@@ -66,7 +66,7 @@ describe("index.html", () => {
   test("enlaza un PDF por parcial con el nombre acordado", () => {
     for (const p of data.parciales) {
       assert.ok(
-        html.includes(`../../pdf/formulario-${p.id}-${data.meta.curso}.pdf`),
+        html.includes(`pdf/formulario-${p.id}-${data.meta.curso}.pdf`),
         `falta el enlace al PDF de ${p.id}`
       );
     }

@@ -1,101 +1,61 @@
 <div align="center">
 
-# 📐 Ruiz Academy — Herramientas de Ingeniería y Estructuras
+# Ruiz Academy
 
-**Herramientas web interactivas para Resistencia de Materiales (REM) y Cálculo de Estructuras.**  
-Desarrollado por un estudiante de ingeniería, para estudiantes de ingeniería.
+**Herramientas interactivas para Resistencia de Materiales y cálculo de estructuras.**
 
-[🌐 Visitar la Web (ruizacademy.es)](https://ruizacademy.es) · [🇺🇸 Read in English](README.md)
+Un proyecto personal para explorar y comprender mejor algunos conceptos de ingeniería.
+
+[🌐 Visitar la web](https://ruizacademy.es) · [🇺🇸 Read in English](README.md)
 
 </div>
 
 ---
 
-## 💡 Sobre el Proyecto y Mi Historia (Transparencia Total)
+## Sobre el proyecto
 
-¡Hola! Soy un **estudiante de Ingeniería Industrial de 20 años**, actualmente en **3.º de carrera** en la **Universitat Politècnica de València (UPV)**.
+Ruiz Academy es un proyecto independiente creado para ayudar a estudiantes de ingeniería, especialmente en asignaturas como **Resistencia de Materiales (REM)** y **Estructuras**.
 
-Soy autodidacta con el lenguaje de programación **Python** y mi objetivo a largo plazo como ingeniero industrial es conectar Python con problemas reales de ingeniería, análisis de datos y optimización de procesos. Sin embargo, tenía un dominio web personal comprado (`ruizacademy.es`) de un proyecto anterior y no quería desperdiciarlo.
+Soy Alejandro Hernández Ruiz, estudiante de **3.º de Ingeniería Industrial en la Universitat Politècnica de València (UPV)**. A largo plazo, mis intereses se centran en Python, el análisis de datos y la aplicación de la tecnología a problemas de ingeniería.
 
-Por pura curiosidad y con ganas de construir un proyecto real que aportara valor a la comunidad de estudiantes de mi universidad —especialmente en asignaturas clave y exigentes como **Resistencia de Materiales (REM)** y **Estructuras**—, decidí aprender por mi cuenta las bases mínimas de **HTML, CSS y JavaScript**.
+Quería construir una herramienta útil para la comunidad universitaria. Para ello, aprendí las bases de HTML, CSS y JavaScript y utilicé herramientas de IA como apoyo durante la implementación. Mi papel consistió en definir los requisitos y el comportamiento esperado, orientar la estructura de la aplicación y revisar los cálculos y resultados. La IA formó parte del proceso de desarrollo: no afirmo haber escrito de forma independiente cada línea de código ni ser desarrollador web profesional.
 
-### 🎼 El papel de "Director de Orquesta" apalancado en IA
-Al ser estudiante a tiempo completo y no desarrollador web profesional, aprender tres lenguajes de frontend al 100 % habría retrasado este proyecto durante meses. En lugar de dejar que esa limitación de tiempo frenara la publicación de la web, **decidí apalancarme en la Inteligencia Artificial para construir el producto**.
+Ruiz Academy es, por tanto, otra forma de aplicar la tecnología a problemas de ingeniería, no un cambio en mi enfoque profesional a largo plazo.
 
-Mi rol ha sido el de **arquitecto y director de orquesta**: definir los requisitos técnicos, exigir el convenio de signos exacto que se usa en la UPV, diseñar una arquitectura modular limpia y validar cada resultado matemático contrastándolo con exámenes reales resueltos por profesores. Quiero ser 100 % transparente con mi proceso, mis limitaciones actuales como programador y mi intención real de ayudar a compañeros de ingeniería industrial, civil o mecánica a visualizar conceptos difíciles.
+## Herramientas
 
----
+- **Diagramas de vigas** — cálculo de reacciones en los apoyos y representación de los diagramas de esfuerzo cortante \(V(x)\) y momento flector \(M(x)\) para los casos contemplados por la herramienta.
+- **Círculo de Mohr** — exploración de la transformación de tensiones planas mediante un ángulo de giro interactivo y visualización de tensiones transformadas, principales y cortante máximo.
+- **Formulario de REM** — buscador de fórmulas organizado por temas y acceso a los correspondientes formularios en PDF.
 
-## 🛠️ Herramientas Incluidas
+## Aspectos técnicos
 
-1. **Diagramas Interactivos de Vigas 2D (`herramientas/vigas/`):**
-   * Cálculo en tiempo real de reacciones en apoyos, esfuerzos cortantes V(x) y momentos flectores M(x) siguiendo el criterio de fibras traccionadas de la UPV (momentos positivos dibujados hacia abajo).
-2. **Visualizador del Círculo de Mohr 2D (`herramientas/mohr/`):**
-   * Calculadora dinámica de transformación de tensiones (\(\sigma_x, \sigma_y, \tau_{xy}\)) con un deslizador interactivo de ángulo (θ) que renderiza las tensiones principales y el cortante máximo al instante.
-3. **Formulario Inteligente UPV (`herramientas/formulario/`):**
-   * Buscador rápido de fórmulas de REM dividido en Parcial 1 (Temas 1–6) y Parcial 2 (Temas 7–10), renderizado con KaTeX y con descarga directa de los formularios pasados a limpio en LaTeX.
+El proyecto utiliza una estructura frontend modular:
 
----
+- `solver.js` contiene la lógica de cálculo.
+- `render.js` se encarga de la representación gráfica mediante Canvas.
+- `main.js` conecta los cálculos, la visualización y la interfaz.
 
-## 📂 Estructura del Proyecto
+Las fórmulas se almacenan como datos estructurados en JSON. Los formularios PDF se preparan a partir de archivos fuente LaTeX.
 
-El código sigue una arquitectura Frontend modular sin dependencias pesadas, separando la física pura (`solver.js`) del dibujo gráfico (`render.js`) y la interfaz (`main.js`):
+### Pruebas automatizadas
 
-```text
-Ruiz-Academy/
-├── assets/
-│   ├── css/
-│   │   ├── base.css                  # Variables globales, reset, tipografía y modo oscuro
-│   │   ├── components.css            # Botones, tarjetas, inputs y tablas reutilizables
-│   │   └── tools.css                 # Layout común para las calculadoras
-│   ├── img/                          # Recursos visuales e iconos
-│   └── js/
-│       └── common.js                 # Utilidades compartidas y cambio de tema
-├── herramientas/
-│   ├── formulario/
-│   │   ├── pdf/
-│   │   │   ├── formulario-parcial-1-2025.pdf
-│   │   │   └── formulario-parcial-2-2025.pdf
-│   │   ├── build-latex.mjs           # Script automatizado para compilar LaTeX
-│   │   ├── formulario-parcial-1-2025.tex
-│   │   ├── formulario-parcial-2-2025.tex
-│   │   ├── formulas.json             # Base de datos de fórmulas desacoplada
-│   │   ├── index.html
-│   │   └── main.js
-│   ├── mohr/
-│   │   ├── index.html
-│   │   ├── main.js                   # Une interfaz, solver y dibujo
-│   │   ├── render.js                 # Dibujo en Canvas HTML5 del Círculo de Mohr
-│   │   └── solver.js                 # Física pura y ecuaciones de transformación
-│   └── vigas/
-│       ├── index.html
-│       ├── main.js                   # Une interfaz, solver y dibujo
-│       ├── render.js                 # Dibujo en Canvas HTML5 de V(x) y M(x)
-│       └── solver.js                 # Física pura analítica de vigas
-├── tests/
-│   ├── formulario.test.js            # Pruebas de integridad del JSON de fórmulas
-│   ├── mohr.test.js                  # Pruebas unitarias de estados tensionales
-│   └── vigas.test.js                 # Pruebas contrastadas con exámenes reales UPV
-├── index.html                        # Portada principal y selector de herramientas
-├── LICENSE                           # Derechos reservados y condiciones de uso
-├── package.json                      # Configuración de Node.js y Jest
-└── README.md                         # Documentación principal en inglés
-```
+El proyecto utiliza el **ejecutor de pruebas integrado en Node.js** (`node:test`) y las aserciones de `node:assert/strict`. **No utiliza Jest.**
 
----
+Las pruebas cubren determinados cálculos del círculo de Mohr, cálculos y propiedades de equilibrio de vigas, y la integridad de los datos de fórmulas y de contenido relacionado de la página. Estas pruebas comprueban los casos incluidos en la suite; no garantizan que cualquier entrada o situación de ingeniería posible esté libre de errores.
 
-## 🧪 Validación Matemática (Tests Unitarios)
-
-Para garantizar que las herramientas no cometen errores de cálculo, los motores matemáticos (`solver.js`) pasan pruebas automatizadas en local con **Jest** contrastadas con ejercicios reales de examen:
+Para ejecutar las pruebas, utiliza **Node.js 20 o una versión posterior**:
 
 ```bash
-npm install
 npm test
 ```
 
----
+No se necesita instalar un framework de pruebas adicional.
 
-## ⚖️ Aviso Legal y Licencia
+## Nota académica
 
-* **Aviso Académico:** Este es un proyecto independiente creado por y para estudiantes. No está afiliado, patrocinado ni vinculado oficialmente con la *Universitat Politècnica de València (UPV)*.
-* **Licencia:** Consulta el archivo [LICENSE](LICENSE) para conocer los términos de uso y propiedad intelectual.
+Ruiz Academy es un proyecto educativo independiente. **No está afiliado, avalado ni patrocinado por la Universitat Politècnica de València (UPV)**. Utilízalo como material de apoyo y contrasta los resultados importantes con los apuntes de la asignatura y las referencias académicas correspondientes.
+
+## Licencia
+
+Consulta el archivo [`LICENSE`](LICENSE) para conocer las condiciones aplicables.

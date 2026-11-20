@@ -7,13 +7,13 @@ import { formatNumber as f, clamp } from "../../assets/js/common.js";
 import { shearPolyline, momentPolyline } from "./solver.js";
 
 const W = 760;
-const H = 580;
+const H = 600;
 const X0 = 60; // x del apoyo izquierdo
 const X1 = 700; // x del apoyo derecho
 const Y_BEAM = 110;
-const Y_SHEAR = 350; // eje del cortante
-const Y_MOMENT = 494; // eje del flector
-const AMP = 54; // altura máxima de cada diagrama en px
+const Y_SHEAR = 356; // eje del cortante
+const Y_MOMENT = 520; // eje del flector
+const AMP = 50; // altura máxima de cada diagrama en px
 
 const r = (n) => Number(n.toFixed(1));
 const text = (x, y, s, cls = "", anchor = "middle") =>
@@ -74,7 +74,7 @@ function draw(res) {
   if (P !== 0) {
     o.push(`<path class="plot-load" d="${arrow(xa, P > 0 ? 22 : 104, P > 0 ? 104 : 22)}"/>`);
     o.push(text(clamp(xa, 80, 680), 14, `P = ${f(P)} kN`, "plot-value"));
-    o.push(`<line class="plot-grid" x1="${r(xa)}" y1="262" x2="${r(xa)}" y2="548"/>`);
+    o.push(`<line class="plot-grid" x1="${r(xa)}" y1="262" x2="${r(xa)}" y2="${Y_MOMENT + AMP + 4}"/>`);
   }
 
   /* --- Cotas --- */
@@ -82,7 +82,7 @@ function draw(res) {
   o.push(dimension(X0, X1, 252, `L = ${f(L)} m`));
 
   /* --- Cortante --- */
-  o.push(text(X0, 282, "Cortante V [kN]", "plot-value", "start"));
+  o.push(text(X0, 274, "Cortante V [kN]", "plot-value", "start"));
   o.push(`<line class="plot-axis" x1="${X0 - 10}" y1="${Y_SHEAR}" x2="${X1 + 10}" y2="${Y_SHEAR}"/>`);
   const shearPath = "M" + shearPolyline(res).map((p) => `${r(px(p.x))} ${r(yV(p.v))}`).join("L");
   o.push(`<path class="plot-shear-fill" d="${shearPath}Z"/><path class="plot-shear-line" d="${shearPath}"/>`);
@@ -92,12 +92,15 @@ function draw(res) {
       [s.x1, s.v1, -1],
     ]) {
       if (v === 0) continue;
-      o.push(text(px(x) + 5 * side, yV(v) + (v > 0 ? -6 : 14), f(v), "plot-value", side > 0 ? "start" : "end"));
+      // La etiqueta va del lado contrario a la línea del diagrama para que no la atraviese
+      const slope = Math.sign(s.v1 - s.v0);
+      const above = slope === 0 ? v > 0 : side > 0 ? slope < 0 : slope > 0;
+      o.push(text(px(x) + 5 * side, yV(v) + (above ? -7 : 15), f(v), "plot-value", side > 0 ? "start" : "end"));
     }
   }
 
   /* --- Flector (invertido: positivo hacia abajo) --- */
-  o.push(text(X0, 424, "Flector M [kN·m], positivo hacia abajo", "plot-value", "start"));
+  o.push(text(X0, 440, "Flector M [kN·m], positivo hacia abajo", "plot-value", "start"));
   o.push(`<line class="plot-axis" x1="${X0 - 10}" y1="${Y_MOMENT}" x2="${X1 + 10}" y2="${Y_MOMENT}"/>`);
   const momentPath = "M" + momentPolyline(res).map((p) => `${r(px(p.x))} ${r(yM(p.m))}`).join("L");
   o.push(`<path class="plot-moment-fill" d="${momentPath}Z"/><path class="plot-moment-line" d="${momentPath}"/>`);
@@ -111,12 +114,12 @@ function draw(res) {
     const interior = e.x > 1e-9 && e.x < L - 1e-9 && !(P !== 0 && Math.abs(e.x - a) < 1e-9);
     if (interior) o.push(`<line class="plot-grid" x1="${r(x)}" y1="${Y_SHEAR}" x2="${r(x)}" y2="${r(y)}"/>`);
     o.push(`<circle class="plot-point" cx="${r(x)}" cy="${r(y)}" r="4.5"/>`);
-    o.push(text(clamp(x, 150, 610), y + (e.value > 0 ? 20 : -10), `${name} = ${f(e.value)} kN·m en x = ${f(e.x)} m`, "plot-value"));
+    o.push(text(clamp(x, 150, 610), y + (e.value > 0 ? 24 : -14), `${name} = ${f(e.value)} kN·m en x = ${f(e.x)} m`, "plot-value"));
   }
 
   /* --- Cursor de lectura --- */
   o.push(
-    `<g data-cursor visibility="hidden"><line class="plot-cursor" x1="0" y1="262" x2="0" y2="560"/>` +
+    `<g data-cursor visibility="hidden"><line class="plot-cursor" x1="0" y1="262" x2="0" y2="${Y_MOMENT + AMP + 6}"/>` +
       `<circle class="plot-point" data-cv cx="0" cy="0" r="5"/><circle class="plot-point" data-cm cx="0" cy="0" r="5"/></g>`
   );
 

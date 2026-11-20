@@ -22,13 +22,21 @@ const view = createMohrView($("#circulo"), $("#elemento"), (theta) => setAngle(t
 /* Un campo vacío vale 0; si no, se interpreta con coma o punto decimal */
 const read = (el) => (el.value.trim() === "" ? 0 : parseNumber(el.value));
 
+/* Cada valor va en su propio bloque para poder separarlos con CSS */
+const item = (name, value, unit = "") =>
+  `<span class="readout__item">${name} = ${value}${unit ? ` <small>${unit}</small>` : ""}</span>`;
+
 function setAngle(theta) {
   if (!result) return;
   const deg = clamp(Math.round(theta * 10) / 10, -90, 90);
   slider.value = String(deg);
   view.setAngle(deg);
   const st = result.stateAt(deg);
-  readout.textContent = `θ = ${f(deg, 1)}°:  σx′ = ${f(st.sx)} MPa,  σy′ = ${f(st.sy)} MPa,  τx′y′ = ${f(st.tau)} MPa`;
+  readout.innerHTML =
+    item("θ", `${f(deg, 1)}°`) +
+    item("σx′", f(st.sx), "MPa") +
+    item("σy′", f(st.sy), "MPa") +
+    item("τx′y′", f(st.tau), "MPa");
 }
 
 function showResults(res) {
